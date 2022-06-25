@@ -3,14 +3,14 @@
 {% block title %}Log in{% endblock %}
 {% block content %}
 <div class="d-flex justify-content-center my-5">
-    <div class="">
+    <div class="card shadow p-3 mb-5 rounded text-center bg-light">
         <h1>Log In</h1>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <input type="submit" value="Login" class="btn btn-primary">
+            <input type="submit" value="Login" class="btn btn-primary mb-3">
         </form>
-        <a href="{% url 'signup' %}">New user? Sign up here</a><br>
+        <a href="{% url 'signup' %}">New user? Sign up here</a>
         <a href="{% url 'password_reset' %}">Forgot password?</a>
     </div>
 </div>

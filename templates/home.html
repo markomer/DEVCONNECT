@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} About {% endblock title %}
+{% block content %}
+
+<div class="text-center">
+    <h1 class="text-center">News Feed</h1>
+</div>
+    <div class="container d-flex justify-content-center flex-column">
+            {% for post, liked_by in posts %}
+                <div class="card my-3 rounded bg-light shadow">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.author }}</h5>
+                        <p class="card-text">{{ post.body }}</p>
+                        <small><a href="#" class="card-link">Comment</a></small>
+                        {% if user not in liked_by %}
+                        <small><a value="{{post.pk}}" id="{{ post.pk }}" class="card-link like">Like</a></small>
+                        {% endif %}
+                        {% if user == post.author %}
+                        <small><a href="{% url 'delete_post' post.pk %}" class="card-link float-right px-1">Delete Post</a></small>
+                        <small><a href="{% url 'update_post' post.pk %}" class="card-link float-right px-1">Edit Post</a></small>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.like').on('click', function(){
+                $.ajax({
+                    type:'GET', 
+                    url:'/post/create-like/'+$(this).attr('id'),
+                    datatype: 'json',
+                    success: function(json){
+                        console.log(json)
+                    }
+                })
+                $(this).hide()
+                
+            })
+        })
+    </script>
+{% endblock content %}

@@ -1,0 +1,46 @@
+
+  
+{% load bootstrap_icons %}
+
+
+    <nav id="navbar" class="navbar navbar-expand-xl navbar-dark bg-dark px-5 mb-5">
+        <a id="nav-logo" class="navbar-brand" href="">Dev Connect</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        {% if user.is_authenticated %}
+        <div class="collapse navbar-collapse " id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active px-3">
+              <a class="nav-link" href="{% url 'new_post' %}">{% bs_icon 'plus' %} New Post</a>
+            </li>
+            <li class="nav-item active px-3">
+              <a class="nav-link" href="">{% bs_icon 'chat-dots' %} New Message</a>
+            </li>
+            <!-- <li class="nav-item active px-3">
+              <a class="nav-link" href="">{% bs_icon 'graph-up' %} Reports</a>
+            </li> -->
+            <!-- <li class="nav-item active px-3">
+              <form method="get" action="" class="form-inline">
+                <input name="q" type="text" placeholder=" Search Customer">
+                <button class="btn btn-sm btn-outline-secondary my-2 my-sm-0" type="submit">{% bs_icon 'search' %}</button>
+              </form>
+            </li> -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {% bs_icon 'person-circle' %}
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" id="logout-dropdown" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">logout</a></li>
+              </ul>
+            </li>
+            <li class="nav-item active px-4">
+              <a class="nav-link" href="{% url 'logout' %}">Log out</a>
+            </li>
+          </ul>
+        </div>
+        {% endif %}
+
+      </nav>

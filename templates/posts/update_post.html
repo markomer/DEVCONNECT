@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} new Post{% endblock title %}
+{% block content %}
+
+<div class="container-fluid px-1 py-4 mx-auto">
+    <div class=" d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+            <div class="card p-5 my-5">
+                <div class="card-title">
+                    <h1 class="text-center">Update Post</h1>
+                </div>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {% if form.errors %}
+                    {% for key,value in form.errors.items %} 
+                    <ul style="list-style-type: none;" class="mb-3">
+                        <li><span class="text-danger">{{ key }} error : {{ value }}</span></li>
+                    </ul>
+                    {% endfor %}
+                    {% endif %}
+                    {{ form.author }}
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Post</label> {{ form.body }} </div>
+                    </div>
+                    <input type="submit" value="Save Post" class="btn btn-dark">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
