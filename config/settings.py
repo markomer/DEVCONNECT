@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'accounts',
     'core',
     'pages',
+    'posts',
 ]
 
 MIDDLEWARE = [
@@ -124,6 +125,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
 STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
+
 
 
 # Default primary key field type

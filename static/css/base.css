@@ -41,7 +41,7 @@ nav {
 
 .bars-icon {
   display: block;
-  block-size: 5px;
+  block-size: 15px;
 }
 
 .navbar-toggler-icon {
@@ -74,6 +74,32 @@ nav {
 
 .navbar.nav {
   border-style: none;
+}
+
+.nav-item-spacer a {
+  color: darkslateblue;
+}
+
+/* In Navbar Line - 'Welcome User Line' */
+
+.welcome-user-line {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: small;
+}
+
+.welcome-user-line-edit-profile {
+  color: white;
+  font-size: xx-small;
+}
+
+.welcome-user-line-edit-profile:hover {
+  color: white;
+  background-color: darkgreen;
+  font-size: xx-small;
 }
 
 /*
