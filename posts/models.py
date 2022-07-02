@@ -11,20 +11,8 @@ class Post(models.Model):
     on_delete=models.CASCADE
   )
 
-#  focusprof = models.Choices(
-#    'professional',
-#    'hobbiest',
-#    'instructor',
-#  )
-
-#  focusdev = models.Choices(
-#    'frontend',
-#    'backend',
-#    'fullstack',
-#  )
-
   body = models.TextField(max_length=400)
-  
+
   created_on = models.DateTimeField(
     auto_now_add=True
   )

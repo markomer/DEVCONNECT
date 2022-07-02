@@ -4,8 +4,8 @@
 
 {% block content %} 
   <h1 class="post-list-title">Posts</h1>
-  {% for post in post_list %} 
 
+  {% for post in post_list %} 
     <div class="card post-list">
       <div class="card-body">
         <h5 class="card-title">Post #{{ post.id }}</h5>
@@ -17,4 +17,5 @@
       </div>
     </div>
   {% endfor %} 
+  
 {% endblock content %} 

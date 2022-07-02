@@ -19,11 +19,14 @@ class PostListView(ListView):
 class PostDetailView(DetailView):
   template_name = 'posts/detail.html'
   model = Post
+  success_url = reverse_lazy('post_list') 
+  
 
 class PostCreateView(LoginRequiredMixin, CreateView):
   template_name = 'posts/new.html'
   model = Post
-  fields = ['title', 'body']
+  fields = ['title', 'body',]
+  success_url = reverse_lazy('post_list')
 
   def form_valid(self, form):
     form.instance.author = self.request.user
