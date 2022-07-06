@@ -1,13 +1,21 @@
 {% extends 'base.html' %} 
+<!-- below--v CC Vid#3 - title_tag thingy, was just title -->
+{% block title %}{{ post.title_tag }}{% endblock title %} 
 
-{% block title %}{{ post.title }}{% endblock title %} 
 
 {% block content %} 
   <h1>{{ post.title }}</h1>
   <strong>By {{ post.author }} | On {{ post.created_on }}</strong>
-  <p>{{ post.body }}</p>
-  {% if user.is_authenticated %} 
+<br><br>
+<div class="form-group">
+  <form method="POST">
+    {% csrf_token %} 
+    {{ form.as_p }} 
+    <p>{{ post.body }}</p>
+    {% if user.is_authenticated %} 
     <p>
+</div>
+<br>
       <a href="{% url 'post_update' post.id %}"class="btn btn-primary">
         Edit
       </a>
@@ -22,5 +30,20 @@
         Back to Posts List
       </a>
     </p>
+
   {% endif %} 
 {% endblock content %} 
+
+
+
+<!-- CC Vid#2
+<h1>{{ post.title }}</h1>
+<small>By: {{ psot.author.first_name }} {{post.author.last_name }}</small>
+<br/>
+<hr>
+<br/>
+{{ post.body }}
+
+<br/><br/>
+<a href="{% url 'home' %}">Back</a>
+-->

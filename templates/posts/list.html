@@ -10,6 +10,9 @@
       <div class="card-body">
         <h5 class="card-title">Post #{{ post.id }}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{ post.title }}</h6>
+        <!-- below--v CC Vid#3 - title_tag -->
+        <h6 class="card-title-tag">{{ post.title_tag }}</h6>
+        <h6 class="card-category">Category: {{ post.category }}</h6>
         <p class="card-text">{{ post.body|truncatechars:500 }}</p>
         <a href="{% url 'post_detail' post.id %}" class="card-link">
           Continue Reading
@@ -19,3 +22,18 @@
   {% endfor %} 
   
 {% endblock content %} 
+
+
+<!-- CC Vid#2
+<h1>Post</h1>
+
+<ul>
+  {% for post in object_list %} 
+    <li>
+      <a href="{% url 'detail' post.pk %}>{{ post.title }}</a>
+       - {{ post.author }}
+      <br/>{{ post.body }}
+    </li>
+    {% endfor %} 
+</ul>
+-->
