@@ -1,13 +1,12 @@
+from itertools import chain
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import (
   CreateView,
   UpdateView,
-  DeleteView
-)
+  DeleteView)
 from .models import Post
-from django.contrib.auth.mixins import (
-  LoginRequiredMixin, UserPassesTestMixin)
+from django.contrib.auth.mixins import (LoginRequiredMixin, UserPassesTestMixin)
 from django.urls import reverse_lazy
 from .forms import PostForm
 
@@ -58,3 +57,5 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
   def test_func(self):
     obj = self.get_object()
     return obj.author == self.request.user
+
+   
