@@ -74,4 +74,26 @@ class Post(models.Model):
   def get_absolute_url(self):
     return reverse('post_detail', args=[self,id])
 
-# Create your models here.
+class Like(models.Model):
+    liker = models.ForeignKey(User, on_delete=models.CASCADE, related_name='likes')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='postlikes')
+
+    class Meta:
+        db_table = 'like'
+        app_label = 'posts'
+
+    def __str__(self) -> str:
+        return f'{self.liker}'
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='postcomments')
+    commenter = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
+    date_commented = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    comment_body = models.TextField(max_length=2000, null=True, blank=True)
+
+    class Meta:
+        db_table = 'comment'
+        app_label = 'posts'
+
+    def __str__(self) -> str:
+        return f'{self.commenter}'

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'core',
     'pages',
     'posts',
+    'django_bootstrap_icons',
 ]
 
 MIDDLEWARE = [
