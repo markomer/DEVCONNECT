@@ -4,7 +4,7 @@ from django.views.generic import ListView
 from posts.models import Post
 
 class SearchView(ListView):
-  template_name = 'posts/search_view.html'
+  template_name = 'posts/search_posts.html'
   paginate_by = 20
   count = 0
 

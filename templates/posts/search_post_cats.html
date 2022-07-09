@@ -1,15 +1,18 @@
 {% extends 'base.html' %} 
 
-{% block title %}Posts{% endblock title %} 
+{% block title %}Posts-Searched{% endblock title %} 
 
 {% block content %} 
-  <h1 class="post-list-title">Posts</h1>
+  <center>
+    {% if searched %} 
+      <h1>You Searched For {{ searched }}</h1>
 
-  <div>
-    <h1>You Searched For...</h1>
+    {% else %} 
+      <h1>Hey! You Forgot To Search For A Venue...</h1>
 
+    {% endif %} 
+  </center>
 
-  </div>
 
 
   <!--
@@ -17,8 +20,8 @@
     <div class="card post-list">
       <div class="card-body">
         <h5 class="card-title">Post #{{ post.id }}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{ post.title }}</h6>
-        <!-- below--v CC Vid#3 - title_tag --><!-- 
+        <h6 class="card-subtitle mb-2 text-muted">{{ post.title }}</h6>-->
+        <!-- below--v CC Vid#3 - title_tag --> <!-- 
         <h6 class="card-title-tag">{{ post.title_tag }}</h6>
         <h6 class="card-category">Category: {{ post.category }}</h6>
         <p class="card-text">{{ post.body|truncatechars:500 }}</p>

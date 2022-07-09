@@ -102,6 +102,19 @@ nav {
   font-size: xx-small;
 }
 
+/* ===== Post List Page ====*/
+
+.post-list-title-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-control.me-2 {
+  width: 300px;
+}
+
 /*
 
 li{
