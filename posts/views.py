@@ -1,21 +1,27 @@
+from itertools import chain
 import json
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import (
-  CreateView,
-  UpdateView,
-  DeleteView
-)
+from django.views.generic.edit import (CreateView, UpdateView, DeleteView)
 from .models import Post, Like, Comment
-from django.contrib.auth.mixins import (
-  LoginRequiredMixin, UserPassesTestMixin)
+from django.contrib.auth.mixins import (LoginRequiredMixin, UserPassesTestMixin)
 from django.urls import reverse_lazy
 from .forms import PostForm
 
 
    #def home(request):
    #  return render(request, 'home.html', {})
+
+def search_post_cats(request):
+  if request.method == "POST":
+    searched = request.POST.get('searched')
+
+    return render(request, 'posts/search_post_cats.html', {'searched':searched})
+  else:
+    return render(request, 'posts/search_post_cats.html', {})
+
+
 
 class PostListView(ListView):
   template_name = 'posts/list.html'
@@ -27,6 +33,14 @@ class PostListView(ListView):
     liked_by = [[i.liker for i in x.postlikes.all()] for x in posts]
     context['posts'] = zip(posts, liked_by)
     return context
+
+  def search_post_cats(request):
+    if request.method =="POST":
+      searched = request.POST['searched']
+
+      return render(request, 'posts/search_post_cats.html', {'searched': searched})
+    else:
+      return render(request, 'posts/search_post_cats.html', {})
 
 
 class PostDetailView(DetailView):
@@ -57,6 +71,9 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
   def test_func(self):
     obj = self.get_object()
     return obj.author == self.request.user
+
+  #def get_success_url(self):
+  #  return self.request.GET.get('next', reverse('home'))
 
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):

@@ -12,10 +12,10 @@
     {% csrf_token %} 
     {{ form.as_p }} 
     <p>{{ post.body }}</p>
-    {% if user.is_authenticated %} 
-    <p>
 </div>
-<br>
+    {% if user.is_authenticated %} 
+    <br>
+    <p>
       <a href="{% url 'post_update' post.id %}"class="btn btn-primary">
         Edit
       </a>
@@ -26,11 +26,10 @@
       </a>
     </p>
     <p>
-      <a href="{% url 'post_list' %}" class="btn btn-primary bg-black bd-8px ">
+      <a href="{% url 'post_list' %}" class="btn btn-secondary bg-white text-black">
         Back to Posts List
       </a>
     </p>
-
   {% endif %} 
 {% endblock content %} 
 

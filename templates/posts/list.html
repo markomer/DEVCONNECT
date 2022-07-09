@@ -3,7 +3,14 @@
 {% block title %}Posts{% endblock title %} 
 
 {% block content %} 
-  <h1 class="post-list-title">Posts</h1>
+<div class="post-list-title-block">
+    <h1 class="post-list-title">Posts</h1>
+    <form class="d-flex" method=POST action="{% url 'search_post_cats' %}">
+        {% csrf_token %} 
+        <input class="form-control me-2" type="search" placeholder="Search Posts by Category" aria-label="Search" name="searched">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+</div>  
 
   {% for post, liked_by in posts %}
         <div class="card my-3 rounded bg-light shadow">
@@ -11,10 +18,17 @@
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title m-0">{{ post.author }} - {{ post.created_on|timesince }} ago</h5>
+                        <!-- PUT CATEGORY TITLE HERE ??? -->
+                        <h5 class="post-category">{{ post.category}}</h5>
                     </div>
                     <div class="card-body p-3">
-                        <p class="card-text">{{ post.body }}</p>
-                    
+                        <!--<p class="card-text">{{ post.body }}</p>-->
+                         <!-- BODY TRUNCATING & DETAIL VIEW PAGE -->
+                         <p class="card-text">{{ post.body|truncatechars:200 }}</p>
+                         <a href="{% url 'post_detail' post.id %}" class="card-link">
+                           Continue Reading
+                         </a>
+                         <!-- ================================= -->                   
                         <small><a id="comment-{{post.pk}}" class="card-link mx-2 comment">Comment</a></small>
                         {% if user not in liked_by %}
                         <small><a value="{{post.pk}}" id="{{ post.pk }}" class="card-link mx-2 like not-liked {{ post.pk }}-like" style="cursor: pointer;">{% bs_icon 'hand-thumbs-up' %} Like <span id="{{ post.pk }}-num-not-liked">{{ post.postlikes.all|length }}</span></a></small>
@@ -24,8 +38,8 @@
                         <small><a value="{{post.pk}}" id="{{ post.pk }}" class="card-link mx-2 like is-liked {{ post.pk }}-like" style="cursor: pointer;">{% bs_icon 'hand-thumbs-up-fill' %} Liked <span id="{{ post.pk }}-num-liked">{{ post.postlikes.all|length }}</span></a></small>
                         {% endif %}
                         {% if user == post.author %}
-                        <small><a href="{% url 'delete_post' post.pk %}" class="card-link float-right px-1">Delete Post</a></small>
-                        <small><a href="{% url 'update_post' post.pk %}" class="card-link float-right px-1">Edit Post</a></small>
+                        <small><a href="{% url 'post_delete' post.pk %}" class="card-link float-right px-1">Delete Post</a></small>
+                        <small><a href="{% url 'post_update' post.pk %}" class="card-link float-right px-1">Edit Post</a></small>
                         {% endif %}
                         <form class="d-flex">
                             {% csrf_token %}
