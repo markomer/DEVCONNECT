@@ -16,8 +16,9 @@ from .forms import PostForm
 def search_post_cats(request):
   if request.method == "POST":
     searched = request.POST.get('searched')
-
-    return render(request, 'posts/search_post_cats.html', {'searched':searched})
+    posts = Post.objects.filter(category__contains=searched)
+    #return render(request, 'posts/search_view.html', {'searched':searched,'posts':posts})
+    return render(request, 'posts/search_post_cats.html', {'searched':searched,'posts':posts})
   else:
     return render(request, 'posts/search_post_cats.html', {})
 
@@ -34,13 +35,7 @@ class PostListView(ListView):
     context['posts'] = zip(posts, liked_by)
     return context
 
-  def search_post_cats(request):
-    if request.method =="POST":
-      searched = request.POST['searched']
 
-      return render(request, 'posts/search_post_cats.html', {'searched': searched})
-    else:
-      return render(request, 'posts/search_post_cats.html', {})
 
 
 class PostDetailView(DetailView):
