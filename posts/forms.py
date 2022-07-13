@@ -58,3 +58,5 @@ class PostForm(forms.ModelForm):
       #'snippet': forms.Textarea(attrs={'class': 'form-control'}),
     }
 
+
+

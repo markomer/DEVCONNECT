@@ -115,6 +115,24 @@ nav {
   width: 300px;
 }
 
+.cat-and-search-line {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.cat-and-search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cat-label {
+  margin-right: 5px;
+}
+
 /*
 
 li{

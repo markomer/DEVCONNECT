@@ -67,6 +67,44 @@ class Comment(models.Model):
         return f'{self.commenter}'
 
 
+PROFESSIONAL_CATEGORIES = [
+  ('all', 'all'),
+  ('professional-all', 'professional-all'),
+  ('professional-frontend', 'professional-frontend'),
+  ('professional-backend', 'professional-backend'),
+  ('professional-fullstack', 'professional-fullstack'),
+  ('hobbiest-all', 'hobbiest-all'),
+  ('hobbiest-frontend', 'hobbiest-frontend'),
+  ('hobbiest-backend', 'hobbiest-backend'),
+  ('hobbiest-fullstack', 'hobbiest-fullstack'),
+  ('instructor-all', 'instructor-all'),
+  ('instructor-frontend', 'instructor-frontend'),
+  ('instructor-backend', 'instructor-backend'),
+  ('instructor-fullstack', 'instructor-fullstack'),
+]
+
+DEVELOPMENT_CATEGORIES = [
+  ('all', 'all'),
+  ('professional-all', 'professional-all'),
+  ('professional-frontend', 'professional-frontend'),
+  ('professional-backend', 'professional-backend'),
+  ('professional-fullstack', 'professional-fullstack'),
+  ('hobbiest-all', 'hobbiest-all'),
+  ('hobbiest-frontend', 'hobbiest-frontend'),
+  ('hobbiest-backend', 'hobbiest-backend'),
+  ('hobbiest-fullstack', 'hobbiest-fullstack'),
+  ('instructor-all', 'instructor-all'),
+  ('instructor-frontend', 'instructor-frontend'),
+  ('instructor-backend', 'instructor-backend'),
+  ('instructor-fullstack', 'instructor-fullstack'),
+]
+
+
+
+#class CatsCombine(models.Model):
+#    prof_cats = models.CharField(max_length=128, choices=PROFESSIONAL_CATEGORIES, default='all_professions_cats')
+#    dev_cats = models.CharField(max_length=128, choices=DEVELOPMENT_CATEGORIES, default='all_development_cats')
+
 #================ Posts Query Filter - vrsn 1 ==================
 
 # from ckeditor.fields import RichTextField

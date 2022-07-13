@@ -8,15 +8,29 @@ from .models import Post, Like, Comment
 from django.contrib.auth.mixins import (LoginRequiredMixin, UserPassesTestMixin)
 from django.urls import reverse_lazy
 from .forms import PostForm
+from django.db.models import Q
 
 
    #def home(request):
    #  return render(request, 'home.html', {})
 
+#class SearchResultsView(ListView):
+#  model = Post
+#  template_name = 'posts/search_post_cats.html'
+#========= tried to use class above with def below for search from dc vid
+#def search_post_cats(request):
+#  if request.method == "POST":
+#    searched = request.POST.get('searched')
+#    posts = Post.objects.filter(category__contains=searched)
+#    #return render(request, 'posts/search_view.html', {'searched':searched,#'posts':posts})
+#    return render(request, 'posts/search_post_cats.html', {'searched':searched,#'posts':posts})
+#  else:
+#    return render(request, 'posts/search_post_cats.html', {})
+
 def search_post_cats(request):
   if request.method == "POST":
     searched = request.POST.get('searched')
-    posts = Post.objects.filter(category__contains=searched)
+    posts = Post.objects.filter(Q(category__icontains=searched))
     #return render(request, 'posts/search_view.html', {'searched':searched,'posts':posts})
     return render(request, 'posts/search_post_cats.html', {'searched':searched,'posts':posts})
   else:
@@ -35,7 +49,13 @@ class PostListView(ListView):
     context['posts'] = zip(posts, liked_by)
     return context
 
+  def search_post_cats(request):
+    if request.method =="POST":
+      searched = request.POST['searched']
 
+      return render(request, 'posts/search_post_cats.html', {'searched': searched})
+    else:
+      return render(request, 'posts/search_post_cats.html', {})
 
 
 class PostDetailView(DetailView):
@@ -111,3 +131,24 @@ def create_comment_view(request, pk):
                 )
     except Exception as e:
         print(f'create like error: {e}')
+
+
+#def cat_lists_combine(request):
+#    context_dict = {}
+#    if request.method == 'POST':
+#      prof_cats_search = request.POST.get#('prof_cats_search', None)
+#
+#      dev_cats_search = request.POST.get('dev_cats_search', None)
+#
+#
+#      queryset = Post.objects.all()
+#
+#      if prof_cats_search:
+#          queryset = queryset.filter(prof_cats__icontains=prof_cats_search)
+#      if dev_cats_search:
+#          queryset = queryset.filter(dev_cats__icontains=dev_cats_search)
+#
+#      # if none of the search params were filled in then return none
+#      if not prof_cats_search and not dev_cats_search:
+#          queryset = Post.objects.none()
+#    return render(request, "schedule/search_schedule.#html", context_dict)

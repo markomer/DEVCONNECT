@@ -3,9 +3,16 @@
 {% block title %}Delete Post{% endblock title %} 
 
 {% block content %} 
-<p>Are you sure you want to delete "{{ post.title }}"?</p>
+<br><br>
+<h5>Are you sure you want to delete "{{ post.title }}"?</h5>
 <form method="POST">
   {% csrf_token %} 
   <input type="submit" value="Confirm" class="btn btn-danger">
+  <br><br>
+  <p>
+    <a href="{% url 'post_list' %}" class="btn btn-secondary bg-white text-black">
+      Do Not Delete - Back to Posts List
+    </a>
+  </p>
 </form>
 {% endblock content %} 

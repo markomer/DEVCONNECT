@@ -1,0 +1,46 @@
+{% extends 'base.html' %} 
+
+{% block title %}Search Cat Lists{% endblock title %}
+
+{% block content %}
+
+<option placeholder>Search Posts by Dev Category</option>
+<option >all</option>
+<option >professional-all</option>
+<option >professional-frontend</option>
+<option >professional-backend</option>
+<option >professional-frontend</option>
+<option >professional-fullstack</option>
+<option >hobbiest-all</option>
+<option >hobbiest-frontend</option>
+<option >hobbiest-backend</option>
+<option >hobbiest-fullstack</option>
+<option >instructor-all</option>
+<option >instructor-frontend</option>
+<option >instructor-backend</option>
+<option >instructor-fullstack</option>
+
+{% endblock content %} 
+
+<!--{% block main_content %}
+    <form method="post" action="">
+        {% csrf_token %}
+
+        <label for="prof_cats_search">Professional Categories:</label>
+        <input type="text" name="prof_cats_search" id="prof_cats_search">
+
+        <label for="dev_cats_search">Development Categories:</label>
+        <input type="text" name="dev_cats_search" id="dev_cats_search">
+
+    </form>
+    <div id="result_panel">
+        {% if table %}
+            {% render_table table %}
+        {% else %}
+            {% if no_results %}
+                No results returned for <q>{{ no_results }}</q>
+            {% else %}
+                Please enter a search
+            {% endif %}
+        {% endif %}
+{% endblock %}-->

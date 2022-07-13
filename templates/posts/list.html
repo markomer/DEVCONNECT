@@ -7,7 +7,23 @@
     <h1 class="post-list-title">Posts</h1>
     <form class="d-flex" method=POST action="{% url 'search_post_cats' %}">
         {% csrf_token %} 
-        <input class="form-control me-2" type="search" placeholder="Search Posts by Category" aria-label="Search" name="searched">
+        <select class="form-select exact" placeholder="Search Posts by Dev Category" aria-label="Default select collapseExample" name="searched">
+            <option placeholder>Search Posts By Prof-Dev Categories</option>
+            <option >all</option>
+            <option >professional-all</option>
+            <option >professional-frontend</option>
+            <option >professional-backend</option>
+            <option >professional-frontend</option>
+            <option >professional-fullstack</option>
+            <option >hobbiest-all</option>
+            <option >hobbiest-frontend</option>
+            <option >hobbiest-backend</option>
+            <option >hobbiest-fullstack</option>
+            <option >instructor-all</option>
+            <option >instructor-frontend</option>
+            <option >instructor-backend</option>
+            <option >instructor-fullstack</option>
+        </select>
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
 </div>  
@@ -49,7 +65,7 @@
                         <!--<a href="{% url 'post_detail' post.id %}" class="card-link">
                            Continue Reading
                         </a>-->
-                        
+
                          <!-- ================================= -->                   
                         <small><a id="comment-{{post.pk}}" class="card-link mx-2 comment">Comment</a></small>
                         {% if user not in liked_by %}
