@@ -8,7 +8,7 @@
       <div class="cat-and-search-line">
         <div class="cat-and-search">
           <h6 class="cat-label">CURRENT CATEGORY: </h6>
-          <h4> '{{ searched }}' </h4>
+          <h4> '{{ searched }} - {{ searchedAgain }}' </h4>
         </div>
         <form class="d-flex" method=POST action="{% url 'search_post_cats' %}">
           {% csrf_token %} 
@@ -26,10 +26,10 @@
           <div class="card-body">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title m-0">{{ post.author }} - {{ post.date_created|timesince }} ago</h5>
+                <h5 class="card-title m-0">"{{ post.title }}" - by {{ post.author }} - {{ post.date_created|timesince }} ago</h5>
                 <div class="post-cat-label">
                   <h7>Category:</h7>
-                  <h7 class="post-category">{{ post.category}}</h7>
+                  <h7 class="post-category">{{ post.prof_category}} - {{ post.dev_category}}</h7>
                 </div>
               </div>
 
@@ -51,10 +51,7 @@
                   </button>-->
                 </p>
 
-                <!--<a href="{% url 'post_detail' post.id %}" class="card-link">
-                    Continue Reading
-                </a>-->
-                
+                             
                   <!-- ================================= -->                   
                 <small><a id="comment-{{post.pk}}" class="card-link mx-2 comment">Comment</a></small>
                 {% if user not in liked_by %}

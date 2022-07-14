@@ -1,5 +1,5 @@
 h1 {
-  color: rgb(231, 165, 23);
+  color: rgb(8, 180, 8);
 }
 
 /* nav 
@@ -132,6 +132,24 @@ nav {
 .cat-label {
   margin-right: 5px;
 }
+
+/*======= Card =========*/
+
+.card-body {
+  border: solid 1px darkslateblue;
+}
+
+.card-header {
+  border: solid 1px darkslateblue;
+  border-bottom: none;
+}
+
+/*======= Post List Page ======*/
+
+.post-list-title-block, .new-post-title, .about-title {
+  margin: 10px 0 0 0;
+}
+
 
 /*
 

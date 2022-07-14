@@ -7,22 +7,21 @@
     <h1 class="post-list-title">Posts</h1>
     <form class="d-flex" method=POST action="{% url 'search_post_cats' %}">
         {% csrf_token %} 
-        <select class="form-select exact" placeholder="Search Posts by Dev Category" aria-label="Default select collapseExample" name="searched">
-            <option placeholder>Search Posts By Prof-Dev Categories</option>
+        <select class="form-select exact" placeholder="Search Posts by Prof Category" aria-label="Default select collapseExample" name="searched">
+            <option placeholder>Search Posts By Prof Categories</option>
             <option >all</option>
-            <option >professional-all</option>
-            <option >professional-frontend</option>
-            <option >professional-backend</option>
-            <option >professional-frontend</option>
-            <option >professional-fullstack</option>
-            <option >hobbiest-all</option>
-            <option >hobbiest-frontend</option>
-            <option >hobbiest-backend</option>
-            <option >hobbiest-fullstack</option>
-            <option >instructor-all</option>
-            <option >instructor-frontend</option>
-            <option >instructor-backend</option>
-            <option >instructor-fullstack</option>
+            <option >allprof</option>
+            <option >professional</option>
+            <option >hobbiest</option>
+            <option >instructor</option>
+        </select>
+        <select class="form-select exact" placeholder="Search Posts by Dev Category" aria-label="Default select collapseExample" name="searchedAgain">
+            <option placeholder>Search Posts By Dev Categories</option>
+            <option >all</option>
+            <option >alldev</option>
+            <option >frontend</option>
+            <option >backend</option>
+            <option >fullstack</option>
         </select>
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
@@ -34,10 +33,10 @@
                 <div class="card">
 
                     <div class="card-header">
-                        <h5 class="card-title m-0">{{ post.author }} - {{ post.date_created|timesince }} ago</h5>
+                        <h5 class="card-title m-0">"{{ post.title }}" - by {{ post.author }} - {{ post.date_created|timesince }} ago</h5>
                         <div class="post-cat-label">
                             <h7>Category:</h7>
-                            <h7 class="post-category">{{ post.category}}</h7>
+                            <h7 class="post-category">{{ post.prof_category}} - {{ post.dev_category}}</h7>
                         </div>
 
                     </div>

@@ -15,7 +15,8 @@ class Post(models.Model):
   author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
   body = models.TextField(max_length=400)
   created_on = models.DateTimeField(auto_now_add=True)
-  category = models.CharField(max_length=255, default='all')
+  prof_category = models.CharField(max_length=255, default='all')
+  dev_category = models.CharField(max_length=255, default='all')
 
   #objects = PostManager()
 
