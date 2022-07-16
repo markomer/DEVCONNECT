@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Log in{% endblock %}
+
+{% block content %} 
+<h1 class="log-out-title">Are you sure you want to Logout  ?!?  </h1>
+
+<button type="button" class="btn btn-primary">
+  <a class="nav-link-home-logout-page" style="color: white" href="{% url 'logout' %}" >Logout</a>
+</button>
+<br><br>
+<h3>Come back soon!</h3>
+<br>
+<!--<button type="button" class="btn btn-danger">Danger</button>-->
+<p>Click <a href="{% url 'home' %}">here</a> to go the home page.</p>-->
+{% endblock content %} 

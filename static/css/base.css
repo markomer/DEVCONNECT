@@ -24,6 +24,8 @@ nav {
   color: rgb(190, 45, 45);
 } */
 
+
+
 .container-fluid {
 
   color: white;
@@ -78,6 +80,12 @@ nav {
 
 .nav-item-spacer a {
   color: darkslateblue;
+}
+
+.nav-link-home-logout-page {
+  background: deepskyblue;
+  color: white;
+
 }
 
 /* In Navbar Line - 'Welcome User Line' */

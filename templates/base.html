@@ -27,12 +27,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
+
+          {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">
+            <a class="nav-link active" aria-current="page" href="{% url 'home_in' %}">
               <img class="logo" href="#" src="{% static 'img/dev-connect-logo-1e.png' %}" alt="complete logo">
             </a>
-          </li>
-          {% if user.is_authenticated %} 
+          </li> 
           <li class="nav-item">
             <a class="nav-link" href="{% url 'home_in' %}">Home</a>
           </li>
@@ -52,7 +53,7 @@
             <a class="nav-link" href="{% url 'password_change' %}">Change Password</a>
           </li>-->
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+            <a class="nav-link" href="{% url 'home_logout' %}">Log Out</a>
           </li>
           <li class="nav-item-spacer">
             <a class="nav-item">- - - - - -</a>
@@ -66,6 +67,11 @@
           </li>-->
 
           {% else %} 
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">
+              <img class="logo" href="#" src="{% static 'img/dev-connect-logo-1e.png' %}" alt="complete logo">
+            </a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'home' %}">Home</a>
           </li>

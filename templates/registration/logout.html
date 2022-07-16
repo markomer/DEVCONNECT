@@ -1,11 +1,11 @@
-{% extends 'base.html %} 
-
-{% block title %}Bye!{% endblock title %} 
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Log in{% endblock %}
 
 {% block content %} 
 <h1 class="log-out-title">You are logged out.</h1>
 <p>Come back soon!</p>
 <button type="button" class="btn btn-danger">Danger</button>
-<!--<p>Click <a href="{% url 'home' %}">here</a> to go the home page.</p>>-->
+<!--<p>Click <a href="{% url 'home' %}">here</a> to go the home page.</p>-->
 {% endblock content %} 
 
