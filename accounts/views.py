@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import generic
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.views.generic.edit import CreateView
+from django.views.generic import TemplateView
 from .forms import SignUpForm
 
 #from accounts.models import SignUp
@@ -15,6 +16,11 @@ class SignUpView(generic.CreateView):
   form_class = SignUpForm
   template_name = 'registration/signup.html'
   success_url = reverse_lazy('login')
+
+#class LogoutView(generic.CreateView):
+#  form_class = SignUpForm
+#  template_name = 'registration/signup.html'
+#  success_url = reverse_lazy('login')
 
 
 def login_user(request):
@@ -57,6 +63,10 @@ class UserEditView(generic.UpdateView):
 
   def get_object(self):
     return self.request.user
+
+class LogoutPageView(TemplateView):
+  template_name = 'registration/logout.html'
+  success_url = reverse_lazy('login')
 
 
 #class CreateProfModelView(generic.CreateView):
