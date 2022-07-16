@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Messages{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-center my-5">
+    <div class="d-flex">
+        <div class="card" style="width: 18rem;">
+            <div class="card-header">
+              Unread messages
+            </div>
+                {% for num, user in unread_messages %}
+                <a class="border-bottom border-dark" href=""><div class="d-flex justify-content-between px-3 py-2"><p class="m-0">{{ user.username }}</p><p class="m-0">{{ num.dcount }}</p></div></a>
+                {% endfor %}
+        </div>
+        <div class="card">
+            {% if not convo %}
+            <div class="card-header">
+                New message
+              </div>
+              <form action="" method="post">
+                <input type="text" value="Message">
+              </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
