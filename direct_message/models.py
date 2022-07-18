@@ -12,6 +12,4 @@ class DirectMessage(models.Model):
     def __str__(self):
         return self.sender.username
 
-    # def get_absolute_url(self):
-    #     return reverse('post_detail', args=[self,id])
 

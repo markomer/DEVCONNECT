@@ -1,27 +1,57 @@
-{% extends 'base.html' %}
+{% extends 'message_base.html' %}
 {% load static %}
+{% load bootstrap_icons %}
 {% block title %}Messages{% endblock %}
 {% block content %}
-<div class="d-flex justify-content-center my-5">
-    <div class="d-flex">
-        <div class="card" style="width: 18rem;">
-            <div class="card-header">
-              Unread messages
-            </div>
-                {% for num, user in unread_messages %}
-                <a class="border-bottom border-dark" href=""><div class="d-flex justify-content-between px-3 py-2"><p class="m-0">{{ user.username }}</p><p class="m-0">{{ num.dcount }}</p></div></a>
-                {% endfor %}
+<style>
+  .custom_container{
+    height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
+    overflow: auto;
+  }
+</style>
+  <div class="d-flex w-100 h-100">
+    <div class="card position-relative w-25 d-flex flex-column" style="width: 18rem;padding-top:56px;">
+        <div class="card-header">
+          Unread messages
         </div>
-        <div class="card">
-            {% if not convo %}
-            <div class="card-header">
-                New message
-              </div>
-              <form action="" method="post">
-                <input type="text" value="Message">
-              </form>
-            {% endif %}
+            {% for num, user in unread_messages %}
+            <form id="{{user.pk}}" action="{% url 'messages' user.pk %}" method="get">
+              <input name="user" style="display: none;" type="text" value="{{user.pk}}">
+              <a onclick="document.getElementById('{{user.pk}}').submit();" class="border-bottom border-dark" href="javascript:{}"><div class="d-flex justify-content-between px-3 py-2"><p class="m-0">{{ user.username }}</p><p class="m-0">{{ num.dcount }}</p></div></a>
+            </form>
+            {% endfor %}
+        <div class="card-header">
+          Chats
         </div>
+            {% for user in convo_list %}
+            <form id="{{user.pk}}" action="{% url 'messages' user.pk %}" method="get">
+              <input name="user" style="display: none;" type="text" value="{{user.pk}}">
+              <a onclick="document.getElementById('{{user.pk}}').submit();" class="border-bottom border-dark" href="javascript:{}"><div class="d-flex justify-content-between px-3 py-2"><p class="m-0">{{ user.username }}</p></div></a>
+            </form>
+            {% endfor %}
     </div>
-</div>
-{% endblock %}
+      {% if convo %}
+      <div style="padding-top:60px;" class="card w-100 h-100">
+        <div class="overflow-auto pb-5">
+          {% for message, whos in convo %}
+          {% if whos == 'yours' %}
+          <div style="margin-left:auto; margin-top:10px; margin-bottom:10px; margin-right:5px;" class="bg-primary py-2 px-3 w-50 rounded-pill">{{ message.message }}</div>
+          {% else %}
+          <div class="bg-success m-2 py-2 px-3 w-50 rounded-pill">{{ message.message}}</div>
+          {% endif %}
+          {% endfor %}
+        </div>
+        <div class="position-absolute bottom-0 w-100">
+          <form class="d-flex" action="{% url 'new_message' %}" method="post">
+            {% csrf_token %}
+            <input name="user" style="display: none;" type="text" value="{{convo_user.pk}}">
+            <input required name="message" class="form-control" type="text" placeholder="reply">
+            <button type="submit" class="btn btn-primary">{% bs_icon 'send' %}</button>
+          </form>
+        </div>
+      </div>
+      {% endif %}
+  
+
+    {% endblock %}
