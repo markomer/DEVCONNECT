@@ -24,6 +24,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('posts/', include('posts.urls')),
     path('messages/', include('direct_message.urls')),
+
     #path('pages/', include('pages.urls')),
 
 ]

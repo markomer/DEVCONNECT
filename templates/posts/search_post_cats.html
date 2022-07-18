@@ -12,9 +12,24 @@
         </div>
         <form class="d-flex" method=POST action="{% url 'search_post_cats' %}">
           {% csrf_token %} 
-          <input class="form-control" type="search" placeholder="Search Posts by Category" aria-label="Search" name="searched">
+          <select class="form-select exact" placeholder="Search Posts by Prof Category" aria-label="Default select collapseExample" name="searched">
+              <option placeholder>Search Posts By Prof Categories</option>
+              <option >all</option>
+              <option >allprof</option>
+              <option >professional</option>
+              <option >hobbiest</option>
+              <option >instructor</option>
+          </select>
+          <select class="form-select exact" placeholder="Search Posts by Dev Category" aria-label="Default select collapseExample" name="searchedAgain">
+              <option placeholder>Search Posts By Dev Categories</option>
+              <option >all</option>
+              <option >alldev</option>
+              <option >frontend</option>
+              <option >backend</option>
+              <option >fullstack</option>
+          </select>
           <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+      </form>
 
         <a href="{% url 'post_list' %}" class="btn btn-secondary bg-white text-black">
           Back to Posts List
