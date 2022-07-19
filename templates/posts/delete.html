@@ -7,7 +7,7 @@
 <h5>Are you sure you want to delete "{{ post.title }}"?</h5>
 <form method="POST">
   {% csrf_token %} 
-  <input type="submit" value="Confirm" class="btn btn-danger">
+  <input type="submit" value="Confirm Delete" class="btn btn-danger">
   <br><br>
   <p>
     <a href="{% url 'post_list' %}" class="btn btn-secondary bg-white text-black">

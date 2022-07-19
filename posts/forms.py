@@ -1,8 +1,7 @@
 #from socket import fromshare
 #from django import fromshare
 from django import forms
-from .models import Post, Category
-
+from .models import Post
 
 
 #########

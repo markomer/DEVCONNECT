@@ -3,14 +3,14 @@
 {% block title %}Log in{% endblock %}
 
 {% block content %} 
-<h1 class="log-out-title">Are you sure you want to Logout  ?!?  </h1>
-
-<button type="button" class="btn btn-primary">
-  <a class="nav-link-home-logout-page" style="color: white" href="{% url 'logout' %}" >Logout</a>
-</button>
-<br><br>
-<h3>Come back soon!</h3>
+<h1 class="log-out-title">Are you sure you want to Logout ?!?</h1>
+<div class="home-logout-button">
+  <button type="button" class="btn btn-danger">
+    <a class="home-logout-btn-name" href="{% url 'logout' %}" >LOG OUT</a>
+  </button>
+  <h4 class="home-logout-btn-message">Come back soon!</h4>
+</div>
 <br>
-<!--<button type="button" class="btn btn-danger">Danger</button>-->
-<p>Click <a href="{% url 'home' %}">here</a> to go the home page.</p>-->
+<a href="javascript:history.go(-1)"onMouseOver="self.status.referrer;return true" class="btn btn-secondary bg-white text-black">Do Not Log Out - GO BACK</a>
+
 {% endblock content %} 
