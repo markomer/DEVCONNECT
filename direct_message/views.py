@@ -16,6 +16,7 @@ def message_page(request, pk = None):
             context['convo'] = [(x , 'yours') if x.sender == request.user else (x, 'theirs') for x in convo_yours.union(convo_theirs).order_by('pk')]
             qs = DirectMessage.objects.filter(sender = user_picked, read = False)
             qs.update(read = True)
+            context['new_message'] = True
     user = request.user
     unread_messages = DirectMessage.objects.filter(sent_to = user, read = False).values('sender').annotate(dcount=Count('sender'))
     users = [User.objects.get(pk = x['sender']) for x in unread_messages]
