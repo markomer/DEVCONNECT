@@ -82,11 +82,6 @@ nav {
   color: darkslateblue;
 }
 
-.nav-link-home-logout-page {
-  background: deepskyblue;
-  color: white;
-
-}
 
 /* In Navbar Line - 'Welcome User Line' */
 
@@ -123,24 +118,6 @@ nav {
   width: 300px;
 }
 
-.cat-and-search-line {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: space-between;
-}
-
-.cat-and-search {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.cat-label {
-  margin-right: 5px;
-}
-
 /*======= Card =========*/
 
 .card-body {
@@ -154,8 +131,62 @@ nav {
 
 /*======= Post List Page ======*/
 
-.post-list-title-block, .new-post-title, .about-title {
+.post-list-title-block, .new-post-title, .about-title, .home-in-title, .home-title, .login-title, .log-out-title, .edit-profile-title {
   margin: 10px 0 0 0;
+}
+
+.home-logout-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  margin: 15px 0 0 0;
+}
+
+.home-logout-btn-name {
+  color: white;
+}
+
+.home-logout-btn-name:hover {
+  color: white;
+}
+
+.home-logout-btn-message {
+  color: black;
+  margin-left: 10px;
+}
+
+.search-again-title-and-search-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.search-again-title-and-search-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.my-list-searched-cats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.my-list-cat-label {
+  margin-right: 10px;
+}
+
+.my-list-cats-searched {
+  padding: 10px 0 0 5px;
+}
+
+.search-again-title-and-search-back-btns {
+
 }
 
 

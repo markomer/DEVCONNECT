@@ -5,10 +5,12 @@ from django import forms
 #from accounts.models import PROFESSION_CHOICES
 
 
+#=========== SignUp Form Items ============================
+#===?????? ProfCat & DevCat Needed..??????=================
 
 PROF_CHOICES = (
   ('professional', 'Professional'),
-  ('hobbiest', 'Hobbiest'),
+  ('student', 'Student'),
   ('instructor', 'Instructor')
 )
 
@@ -17,7 +19,6 @@ DEV_CHOICES = (
   ('backend', 'Back End'),
   ('fullstack', 'Full Stack')
 )
-
 
 class SignUpForm(UserCreationForm):
   email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
@@ -39,23 +40,8 @@ class SignUpForm(UserCreationForm):
     self.fields['password2'].widget.attrs['class'] = 'form-control'
 
 
-  # 20220705 - trying below code for sign up "memory"...???...
-  #def post(self, request, *args, **kwargs):
-  #  form = SignUpForm(request.POST)
-  #  if form.is_valid():
-  #    form.save()
-  #    email = form.cleaned_data.get('email')
-  #    raw_password = form.cleaned_data.get('password1')
-  #    user = authenticate(request, username=email, passwrod=raw_password)
-  #    login(request, user)
-  #    return redirect('home')
-  #  return render(request, self.template_name, {'form': form})
-  #
-  #def get(self, request, *args, **kwargs):
-  #  return render(request, self.template_name)
-
-
-
+#=========== EditPofile Form Items ============================
+#===?????? ProfCat & DevCat Needed..??????=================
 
 class EditProfileForm(UserChangeForm):
   email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
@@ -78,24 +64,3 @@ class EditProfileForm(UserChangeForm):
     model = User
     fields = ('username', 'first_name', 'last_name', 'prof', 'dev', 'email', 'last_login', 'is_superuser', 'is_staff', 'is_active', 'date_joined') 
 
-
- 
-
-  #def save(self, commit=True):
-  #  # Save the provided password in hashed format
-  #  user = super().save(commit=False)
-  #  user.set_password(self.cleaned_data["password"])
-  #  user.user_type = 1
-  #  if commit:
-  #    user.save()
-#
-#      # Extract your profile data from self.cleaned_data
-#      profile_data = self.cleaned_data
-#
-#      profile_form = EditProfileForm(profile_data)
-#
-#      profile_form.save()
-#    return user
-
-  
-    

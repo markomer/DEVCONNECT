@@ -10,6 +10,17 @@ from .models import Post, Like, Comment
 from .forms import PostForm
 
 
+class PostCreateView(LoginRequiredMixin, CreateView):
+  template_name = 'posts/new.html'
+  model = Post
+  form_class = PostForm
+  #fields = ['title', 'title_tag', 'body',]
+  success_url = reverse_lazy('post_list')
+
+  def form_valid(self, form):
+    form.instance.author = self.request.user
+    return super().form_valid(form)
+    
 
 class PostListView(ListView):
   template_name = 'posts/list.html'
@@ -23,37 +34,15 @@ class PostListView(ListView):
     return context
 
 
-class PostDetailView(DetailView):
-  template_name = 'posts/detail.html'
-  model = Post
-  success_url = reverse_lazy('post_list') 
-  
-
-class PostCreateView(LoginRequiredMixin, CreateView):
-  template_name = 'posts/new.html'
-  model = Post
-  form_class = PostForm
-  #fields = ['title', 'title_tag', 'body',]
-  success_url = reverse_lazy('post_list')
-
-  def form_valid(self, form):
-    form.instance.author = self.request.user
-    return super().form_valid(form)
-    
-
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
   template_name = 'posts/edit.html'
   model = Post
   form_class = PostForm
-  #fields = ['title', 'title_tag', 'body']
   success_url = reverse_lazy('post_list')
 
   def test_func(self):
     obj = self.get_object()
     return obj.author == self.request.user
-
-  #def get_success_url(self):
-  #  return self.request.GET.get('next', reverse('home'))
 
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -65,6 +54,16 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     obj = self.get_object()
     return obj.author == self.request.user
 
+    
+#========= Read Single-Post Detail =========
+#======?????? Using this..??????======
+class PostDetailView(DetailView):
+  template_name = 'posts/detail.html'
+  model = Post
+  success_url = reverse_lazy('post_list') 
+
+
+#========= Search Posts thru two Categories =========
 
 def search_post_cats(request):
   if request.method == "POST":
@@ -74,7 +73,9 @@ def search_post_cats(request):
     return render(request, 'posts/search_post_cats.html', {'searched':searched, 'searchedAgain':searchedAgain, 'posts':profposts})
   else:
     return render(request, 'posts/search_post_cats.html', {})
+    
 
+#========= likes & comments - views =========
 
 def create_like_view(request, pk):
     try:

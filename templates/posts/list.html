@@ -56,15 +56,7 @@
                             <a class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true" aria-controls="collapseExample">
                                 Close Full Post
                             </a>
-                            <!--<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                Button with data-bs-target
-                            </button>-->
                         </p>
-
-                        <!--<a href="{% url 'post_detail' post.id %}" class="card-link">
-                           Continue Reading
-                        </a>-->
-
                          <!-- ================================= -->                   
                         <small><a id="comment-{{post.pk}}" class="card-link mx-2 comment">Comment</a></small>
                         {% if user not in liked_by %}
@@ -169,17 +161,3 @@
   </script>
 {% endblock content %} 
 
-
-<!-- CC Vid#2
-<h1>Post</h1>
-
-<ul>
-  {% for post in object_list %} 
-    <li>
-      <a href="{% url 'detail' post.pk %}>{{ post.title }}</a>
-       - {{ post.author }}
-      <br/>{{ post.body }}
-    </li>
-    {% endfor %} 
-</ul>
--->

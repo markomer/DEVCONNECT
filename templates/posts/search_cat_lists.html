@@ -161,3 +161,70 @@ def search_post_cats(request):
       return render(request, 'posts/search_post_cats.html', {'searchedAgain':searchedAgain,'posts':bothPosts})
 
 
+====================================
+from accounts/views.py
+====================================
+
+def login_user(request):
+  if request.method =="POST":
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username, password)
+    if user is not None:
+      login(request, user)
+      return redirect('home')
+    else:
+      messages.success(request, ("There Was An Error"))
+      return redirect('login')
+
+  else:
+    return render(request, 'authenticate/login.html',)
+
+
+====================================
+from accounts/views.py
+====================================
+
+def register_user(request):
+  if request.method =="POST":
+    form = SignUpForm(request.Post)
+    if form.is_valid():
+      form.save()
+      username = form.cleaned_data['user']
+      password = form.cleaned_data['password']
+      user = authenticate(username=username)
+      login(request, user)
+      messagees.success(request, ("Register"))
+      return redirect('home')
+  else:
+    form = SignUpForm()
+
+  return render (request, 'authenticate/signup.html')
+
+====================================
+from accounts/views.py
+====================================
+#=========== LogoutView  =================
+#===?????? Needed..??????=================
+
+class LogoutView(TemplateView):
+  template_name = 'registration/logout.html'
+  success_url = reverse_lazy('logout')
+
+
+
+====================================
+from posts/models.py
+====================================
+#========= Post Categories - select choices =========
+
+class Category(models.Model):
+  name = models.CharField(max_length=255, default="Cat Goes here")
+
+  def __str__(self):
+    #return self.name
+    return self.name
+
+  def get_absolute_url(self):
+    # return reverse('article-detail', args=(str...))
+    return reverse('post_list')

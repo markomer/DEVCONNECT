@@ -15,4 +15,3 @@ class AboutPageView(TemplateView):
 class HomeLogoutPageView(TemplateView):
   template_name = 'pages/home_logout.html'
 
-# Create your views here.
