@@ -60,7 +60,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 class PostDetailView(DetailView):
   template_name = 'posts/detail.html'
   model = Post
-  success_url = reverse_lazy('post_list') 
+
 
 
 #========= Search Posts thru two Categories =========

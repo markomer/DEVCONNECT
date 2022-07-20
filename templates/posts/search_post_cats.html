@@ -3,7 +3,7 @@
 {% block title %}Posts-Searched{% endblock title %} 
 
 {% block content %} 
-  <div><br>
+  <div>
     {% if searched %}
       <div class="search-again-title-and-search-block">
         <div class="search-again-title-and-search-line">
@@ -15,16 +15,13 @@
             {% csrf_token %} 
             <select class="form-select exact" placeholder="Search Posts by Prof Category" aria-label="Default select collapseExample" name="searched">
                 <option placeholder>Search Posts By Prof Categories</option>
-                <option >all</option>
-                <option >allprof</option>
                 <option >professional</option>
-                <option >hobbiest</option>
+                <option >student</option>
                 <option >instructor</option>
             </select>
             <select class="form-select exact" placeholder="Search Posts by Dev Category" aria-label="Default select collapseExample" name="searchedAgain">
                 <option placeholder>Search Posts By Dev Categories</option>
-                <option >all</option>
-                <option >alldev</option>
+                <option >general-all</option>
                 <option >frontend</option>
                 <option >backend</option>
                 <option >fullstack</option>
@@ -32,11 +29,21 @@
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>
-        <div class="search-again-title-and-search-back-btns">
-          <a href="javascript:history.go(-1)"onMouseOver="self.status.referrer;return true" class="btn btn-secondary bg-white text-black">BACK</a>
-          <a href="{% url 'post_list' %}" class="btn btn-secondary bg-white text-black">
-            Back to Posts List
-          </a>
+        <div class="search-again-read-choices-and-back-btns">
+          <p>
+            <a class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              See Full Posts
+            </a>
+            <a class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                See Intros Only
+            </a>
+          </p>
+          <div class="search-again-title-and-search-back-btns">
+            <a href="javascript:history.go(-1)"onMouseOver="self.status.referrer;return true" class="btn btn-secondary bg-white text-black">BACK</a>
+            <a href="{% url 'post_list' %}" class="btn btn-secondary bg-white text-black">
+              Return To Posts List
+            </a>
+          </div>
         </div>
       </div> 
       {% for post in posts %}
@@ -58,11 +65,8 @@
                   <p class="card-text"> {{ post.body }} (test text) </p>
                 </div>
                 <p>
-                  <a class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  <a class="btn btn-light btn-sm" href="{% url 'post_detail' post.id %}">
                     Read Full Post
-                  </a>
-                  <a class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                      Close Full Post
                   </a>
                 </p>
 

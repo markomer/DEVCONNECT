@@ -13,7 +13,7 @@ class Post(models.Model):
   title_tag = models.CharField(max_length=255)
   #header_image = models.ImageField(null=True, blank=True, upload_to="images/")
   author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-  body = models.TextField(max_length=400)
+  body = models.TextField(max_length=999)
   created_on = models.DateTimeField(auto_now_add=True)
   prof_category = models.CharField(max_length=255, default='all')
   dev_category = models.CharField(max_length=255, default='all')

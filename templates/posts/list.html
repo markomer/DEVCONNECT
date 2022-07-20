@@ -5,20 +5,25 @@
 {% block content %} 
 <div class="post-list-title-block">
     <h1 class="post-list-title">Posts</h1>
+    <p>
+        <a class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true" aria-controls="collapseExample">
+            Read Intros Only
+        </a>
+        <a class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          Read Full Posts
+        </a>
+    </p>
     <form class="d-flex" method=POST action="{% url 'search_post_cats' %}">
         {% csrf_token %} 
         <select class="form-select exact" placeholder="Search Posts by Prof Category" aria-label="Default select collapseExample" name="searched">
             <option placeholder>Search Posts By Prof Categories</option>
-            <option >all</option>
-            <option >allprof</option>
             <option >professional</option>
-            <option >hobbiest</option>
+            <option >student</option>
             <option >instructor</option>
         </select>
         <select class="form-select exact" placeholder="Search Posts by Dev Category" aria-label="Default select collapseExample" name="searchedAgain">
             <option placeholder>Search Posts By Dev Categories</option>
-            <option >all</option>
-            <option >alldev</option>
+            <option >general-all</option>
             <option >frontend</option>
             <option >backend</option>
             <option >fullstack</option>
@@ -45,18 +50,13 @@
                         <p class="card-text">{{ post.body|truncatechars:200 }}</p>
 
                         <div class="collapse" id="collapseExample">
-                                <p class="card-text">{{ post.body }}
-                                    (test text)
-                                </p>
+                                <p class="card-text">{{ post.body }}</p>
                         </div>
                         <p>
-                            <a class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <a class="btn btn-light btn-sm" href="{% url 'post_detail' post.id %}">
                               Read Full Post
                             </a>
-                            <a class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true" aria-controls="collapseExample">
-                                Close Full Post
-                            </a>
-                        </p>
+                          </p>
                          <!-- ================================= -->                   
                         <small><a id="comment-{{post.pk}}" class="card-link mx-2 comment">Comment</a></small>
                         {% if user not in liked_by %}

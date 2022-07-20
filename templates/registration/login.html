@@ -6,14 +6,26 @@
 {% block content %}
 
 <div class="login_block">
-    <h1 class="login-title">Log In</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Login" class="btn btn-primary">
-    </form>
-    <a href="{% url 'signup' %}">New user? Sign up here</a><br>
-    <a href="{% url 'password_reset' %}">Forgot password?</a>
+    <h1 class="login-title">Join Us..!</h1>
+    <h4>Log In</h4>
+    <div class="login-signup-box">
+        <form method="post" class="login-box">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Login" class="btn btn-success login">
+        </form>
+        <a href="{% url 'password_reset' %}">Forgot password?</a>
+        <br>
+        <h4>Sign Up</h4>
+        <div class="signup-box">
+            <h7>New User?</h7>
+            <h7 class="signup-join-line">Join and connect with us..!</h7>
+            <a class="btn btn-outline-success login" href="{% url 'signup' %}">Sign Up</a>
+        </div>
+
+
+    </div>
+
 </div>
 
 {% endblock %}

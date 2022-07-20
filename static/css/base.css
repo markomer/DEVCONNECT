@@ -2,6 +2,10 @@ h1 {
   color: rgb(8, 180, 8);
 }
 
+p {
+  margin: 0px;
+}
+
 /* nav 
 
 nav {
@@ -142,8 +146,8 @@ nav {
 
 /*======= Post List Page ======*/
 
-.post-list-title-block, .new-post-title, .about-title, .home-in-title, .home-title, .login-title, .log-out-title, .edit-profile-title {
-  margin: 10px 0 0 0;
+.post-list-title-block, .new-post-title, .about-title, .home-in-title, .home-title, .login-title, .log-out-title, .edit-profile-title, .signup-title, .delete-title, .edit-title {
+  margin: 10px 0 10px 0;
 }
 
 .home-logout-button {
@@ -172,6 +176,7 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 10px 0 0 0;
 }
 
 .search-again-title-and-search-line {
@@ -198,6 +203,79 @@ nav {
 
 .search-again-title-and-search-back-btns {
 
+}
+
+.search-again-read-choices-and-back-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 0 0 0;
+}
+
+.login-signup-box {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  max-width: 290px;
+  border: solid 1px black;
+  padding: 10px;
+  margin: 0 0 5px 0;
+}
+
+.btn.btn-success.login {
+  width: 100%;
+}
+
+.signup-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-width: 290px;
+  border: solid 1px black;
+  padding: 10px;
+}
+
+.signup-join-line {
+  padding: 10px 0 10px 0;
+}
+
+.btn.btn-outline-success.login {
+  width: 100%;
+}
+
+.home-in-info-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: fit-content;
+}
+
+.home-in-btns-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 15px 0 0 0;
+  }
+
+.home-in-btn {
+  width: 100%;
+}
+
+.home-in-btn-two {
+  width: 100%;
+  margin: 0 5px 0 5px;
 }
 
 

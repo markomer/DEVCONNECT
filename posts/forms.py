@@ -8,13 +8,13 @@ from .models import Post
 
 prof_choices = [
   ('Professional', 'Professional'),
-  ('Hobbiest', 'Hobbiest'),
+  ('Student', 'Student'),
   ('Instructor', 'Instructor'),
 ]
 
 dev_choices = [
-  ('All', 'All'),
-  ('Frontencd', 'Frontend'),
+  ('General-All', 'General-All'),
+  ('Frontend', 'Frontend'),
   ('Backend', 'Backend'),
   ('Fullstack', 'Fullstack'),
 ]

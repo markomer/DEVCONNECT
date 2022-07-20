@@ -18,8 +18,6 @@
 <body>
   <nav class="navbar navbar-expand-md bg-black">
     <div class="container-fluid">
-      <!--<a class="navbar-brand" href="#">Navbar</a>-->
-      <!--<img class="logo" href="#" src="{% static 'img/dev-connect-logo-1e.png' %}" alt="complete logo"> -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon">
           <img class="bars-icon" href="#" src="{% static 'img/bars-icon-6a.png' %}" alt="bars icon">
@@ -29,6 +27,7 @@
         <ul class="navbar-nav">
 
           {% if user.is_authenticated %}
+
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'home_in' %}">
               <img class="logo" href="#" src="{% static 'img/dev-connect-logo-1e.png' %}" alt="complete logo">
@@ -67,11 +66,9 @@
             <a>Welcome {{ request.user.username }} </a>
             <a class="welcome-user-line-edit-profile" href="{% url 'edit_profile' %}"> GO TO PROFILE </a>
           </div>
-          <!--<li class="nav-item-spacer">
-            <a class="nav-link disabled">Disabled</a>
-          </li>-->
 
           {% else %} 
+
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'home' %}">
               <img class="logo" href="#" src="{% static 'img/dev-connect-logo-1e.png' %}" alt="complete logo">
@@ -98,6 +95,7 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'about' %}">About</a>
           </li>
+          
           {% endif %}
 
         </ul>

@@ -3,15 +3,16 @@
 {% block title %}Delete Post{% endblock title %} 
 
 {% block content %} 
-<br><br>
-<h5>Are you sure you want to delete "{{ post.title }}"?</h5>
+<h1 class="delete-title">Delete Post</h1>
+<h4>Are you sure you want to delete "{{ post.title }}"?</h4>
 <form method="POST">
   {% csrf_token %} 
   <input type="submit" value="Confirm Delete" class="btn btn-danger">
   <br><br>
   <p>
+    <a href="javascript:history.go(-1)"onMouseOver="self.status.referrer;return true" class="btn btn-secondary bg-white text-black">BACK</a>
     <a href="{% url 'post_list' %}" class="btn btn-secondary bg-white text-black">
-      Do Not Delete - Back to Posts List
+      Go to Posts List
     </a>
   </p>
 </form>
