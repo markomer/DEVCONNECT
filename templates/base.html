@@ -52,7 +52,10 @@
             <a class="nav-link" href="{% url 'about' %}">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'messages' %}">Messages</a>
+            <a href="{% url 'messages' %}" class="notification nav-link d-flex">
+              <span>Messages</span>
+              <span style="display: none;" id="message-notification" class="badge"></span>
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'home_logout' %}">Log Out</a>
@@ -86,9 +89,6 @@
           <li class="nav-item">
             <a class="nav-link disabled" href="#">Create Posts</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="{% url 'messages' %}">Messages</a>
-          </li>
           <!--<li class="nav-item">
             <a class="nav-link" href="{% url 'password_reset' %}">Reset Password</a>
           </li>  -->        
@@ -115,6 +115,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script> <!--for masking -->
- 
+ <script>
+  $.ajax({
+    type:'GET',
+    url: '/messages/get_notifications',
+    datatype : 'json',
+    success:function(json){
+        if(json['notifications'] > 0){
+          $("#message-notification").show().text(json['notifications'])
+        }
+            }
+  })
+ </script>
 </body>
 </html>

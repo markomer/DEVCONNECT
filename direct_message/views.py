@@ -1,3 +1,5 @@
+import json
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .models import DirectMessage
 from django.db.models import Count
@@ -38,7 +40,18 @@ def message_page(request, pk = None):
 
 
 def new_message(request):
-    print('here')
     DirectMessage.objects.create(message = request.POST['message'], sender = request.user, sent_to = User.objects.get(pk = request.POST['user']))
     user_picked = User.objects.get(pk = request.POST['user'])
     return redirect('messages', user_picked.pk)
+
+
+def get_notified(request):
+    user = request.user
+    unread_messages = DirectMessage.objects.filter(sent_to = user, read = False)
+    response_data = {}
+    response_data['notifications'] = len(unread_messages)
+    return HttpResponse(
+                json.dumps(response_data),
+                content_type='application.json'
+            )
+
