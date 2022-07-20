@@ -12,8 +12,9 @@
       <input type="submit" value="Edit" class="btn btn-success">
       <br><br>
       <p>
+        <a href="javascript:history.go(-1)"onMouseOver="self.status.referrer;return true" class="btn btn-secondary bg-white text-black">BACK</a>
         <a href="{% url 'post_list' %}" class="btn btn-secondary bg-white text-black">
-          Do Not Edit - Back to Posts List
+          Back to Posts List
         </a>
       </p>
     </form>

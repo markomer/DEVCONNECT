@@ -15,6 +15,7 @@ PROF_CHOICES = (
 )
 
 DEV_CHOICES = (
+  ('general-all', 'General-All'),
   ('frontend', 'Front End'),
   ('backend', 'Back End'),
   ('fullstack', 'Full Stack')
