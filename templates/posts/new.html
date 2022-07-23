@@ -8,6 +8,12 @@
     {% csrf_token %}
     {{ form.media }}
     {{ form.as_p }}
-    <input type="submit" value="Create" class="btn btn-success">
+    <input type="submit" value="Create" class="btn btn-success new-post-create-btn">
   </form>
+  <div class="search-again-title-and-search-back-btns">
+    <a href="javascript:history.go(-1)"onMouseOver="self.status.referrer;return true" class="btn btn-outline-secondary">BACK</a>
+    <a href="{% url 'post_list' %}" class="btn btn-outline-secondary">
+      Return To Posts List
+    </a>
+  </div>
 {% endblock content %} 

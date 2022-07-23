@@ -154,7 +154,7 @@ nav {
 
 /*======= Post List Page ======*/
 
-.post-list-title-block, .new-post-title, .about-title, .home-in-title, .home-title, .login-title, .log-out-title, .edit-profile-title, .signup-title, .delete-title, .edit-title {
+.post-list-title-block, .new-post-title, .about-title, .home-in-title, .home-title, .login-title, .log-out-title, .edit-profile-title, .signup-title, .delete-title, .edit-title, .detail-title {
   margin: 10px 0 10px 0;
 }
 
@@ -286,41 +286,45 @@ nav {
   margin: 0 5px 0 5px;
 }
 
-
-/*
-
-li{
-  color: white;
-  list-style: none;
+.after-post-body {
+  margin: 5px 0 0 0;
 }
 
-nav a{
+.messages-title-and-back-btns, .detail-title-and-back-btns {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.message-back-btns, .detail-back-btns {
+  display: flex;
+  flex-direction: row;
+}
+
+.post-list-to-top-of-page-btn-block {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  color: white;
-  text-decoration: none;
-  letter-spacing: 2px;
-  width: 150px;
-  height: 26px;
-  padding: 0 20px 0 20px;
+  margin: 0 0 20px 0;
 }
 
-@media (max-width: 675px) {
-  nav ul {
-      flex-direction: column;
-  }
-  
-  nav li {
-      margin: .5em 0;
-  }
+.post-list-to-top-of-page-btn {
+width: 200px;
+}
 
-  nav {
-    height: 100%;
-  }
+.edit-submit-btn, .signup-submit-btn, .new-post-create-btn {
+  margin: 12px 0 20px 0;
+}
 
-  nav a {
-    height: 10px;
-    padding: 0px;
-  }
-} */
+.about-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+
+.logo {
+  margin: 0 0 0 20px;
+}

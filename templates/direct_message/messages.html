@@ -4,14 +4,25 @@
 {% block title %}Messages{% endblock %}
 {% block content %}
 
-<div>
+
+  <div class="messages-title-and-back-btns">
+    <h1>Messages</h1>
+    <div class="messages-back-btns">
+      <a href="javascript:history.go(-1)"onMouseOver="self.status.referrer;return true" class="btn btn-outline-secondary">BACK</a>
+      <a href="{% url 'post_list' %}" class="btn btn-outline-secondary">
+        Return To Posts List
+      </a>
+    </div>
+  </div>
+  <br>
+  <div>
   <style>
     .custom_container{
       height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
-    height: calc(var(--vh, 1vh) * 100);
+      height: calc(var(--vh, 1vh) * 100);
       overflow: auto;
       max-width: 140vh;
-      margin: 100px;
+      margin: 68px 100px 0 100px;
     }
   </style>
   <div class="d-flex w-100 h-100">

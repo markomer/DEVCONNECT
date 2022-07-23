@@ -25,13 +25,13 @@ class SignUpForm(UserCreationForm):
   email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
   first_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
   last_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
-  prof = forms.ChoiceField(label="Choose Profession Type", choices=(PROF_CHOICES), widget=forms.Select(attrs={'class':'form-control'}))
+  #prof = forms.ChoiceField(label="Choose Profession Type", choices=(PROF_CHOICES), widget=forms.Select(attrs={'class':'form-control'}))
 
-  dev = forms.ChoiceField(label="Choose Development Type", choices=(DEV_CHOICES), widget=forms.Select(attrs={'class':'form-control'}))
+  #dev = forms.ChoiceField(label="Choose Development Type", choices=(DEV_CHOICES), widget=forms.Select(attrs={'class':'form-control'}))
 
   class Meta:
     model = User
-    fields = ('username', 'first_name', 'last_name', 'prof', 'dev', 'email', 'password1', 'password2' )
+    fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2' )
 
   def __init__(self, *args, **kwargs):
     super(SignUpForm, self).__init__(*args, **kwargs)
@@ -55,13 +55,13 @@ class EditProfileForm(UserChangeForm):
   is_active = forms.CharField(max_length=100, widget=forms.CheckboxInput(attrs={'class': 'form-check'}))
   date_joined = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
 
-  prof = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
+  #prof = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
 
-  prof = forms.ChoiceField(label="Choose Profession Type", choices=(PROF_CHOICES), widget=forms.Select(attrs={'class':'form-choice'}))
+  #prof = forms.ChoiceField(label="Choose Profession Type", choices=(PROF_CHOICES), widget=forms.Select(attrs={'class':'form-choice'}))
 
-  dev = forms.ChoiceField(label="Choose Developer Type", choices=(DEV_CHOICES), widget=forms.Select(attrs={'class':'form-control'}))
+  #dev = forms.ChoiceField(label="Choose Developer Type", choices=(DEV_CHOICES), widget=forms.Select(attrs={'class':'form-control'}))
 
   class Meta:
     model = User
-    fields = ('username', 'first_name', 'last_name', 'prof', 'dev', 'email', 'last_login', 'is_superuser', 'is_staff', 'is_active', 'date_joined') 
+    fields = ('username', 'first_name', 'last_name', 'email', 'last_login', 'is_superuser', 'is_staff', 'is_active', 'date_joined') 
 

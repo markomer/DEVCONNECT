@@ -47,14 +47,15 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'post_new' %}">Create Posts</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'about' %}">About</a>
-          </li>
+
           <li class="nav-item">
             <a href="{% url 'messages' %}" class="notification nav-link d-flex">
               <span>Messages</span>
               <span style="display: none;" id="message-notification" class="badge"></span>
             </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">About</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'home_logout' %}">Log Out</a>
@@ -85,6 +86,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#">Create Posts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Messages</a>
           </li>
           <!--<li class="nav-item">
             <a class="nav-link" href="{% url 'password_reset' %}">Reset Password</a>
