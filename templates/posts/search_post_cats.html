@@ -14,13 +14,13 @@
           <form class="d-flex" method=POST action="{% url 'search_post_cats' %}">
             {% csrf_token %} 
             <select class="form-select exact" placeholder="Search Posts by Prof Category" aria-label="Default select collapseExample" name="searched">
-                <option placeholder>Search Posts By Prof Categories</option>
+                <option value="" disabled selected hidden>Search Posts By Prof Categories</option>
                 <option >professional</option>
                 <option >student</option>
                 <option >instructor</option>
             </select>
             <select class="form-select exact" placeholder="Search Posts by Dev Category" aria-label="Default select collapseExample" name="searchedAgain">
-                <option placeholder>Search Posts By Dev Categories</option>
+                <option value="" disabled selected hidden>Search Posts By Dev Categories</option>
                 <option >general-all</option>
                 <option >frontend</option>
                 <option >backend</option>
@@ -30,17 +30,13 @@
           </form>
         </div>
         <div class="search-again-read-choices-and-back-btns">
-          <p>
-            <a class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-              See Full Posts
-            </a>
-            <a class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                See Intros Only
-            </a>
-          </p>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseExample" ="button" aria-expanded="false" aria-controls="collapseExample">See Full Posts</button>
+            <button class="btn btn-light btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">See Intros Only</button>
+          </div>          
           <div class="search-again-title-and-search-back-btns">
-            <a href="javascript:history.go(-1)"onMouseOver="self.status.referrer;return true" class="btn btn-secondary bg-white text-black">BACK</a>
-            <a href="{% url 'post_list' %}" class="btn btn-secondary bg-white text-black">
+            <a href="javascript:history.go(-1)"onMouseOver="self.status.referrer;return true" class="btn btn-outline-secondary">BACK</a>
+            <a href="{% url 'post_list' %}" class="btn btn-outline-secondary">
               Return To Posts List
             </a>
           </div>
@@ -51,7 +47,7 @@
           <div class="card-body">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title m-0">"{{ post.title }}" - by {{ post.author }} - {{ post.date_created|timesince }} ago</h5>
+                <h5 class="card-title m-0">"{{ post.title }}" - by {{ post.author }} - {{ post.created_on|timesince }} ago</h5>
                 <div class="post-cat-label">
                   <h7>Category:</h7>
                   <h7 class="post-category">{{ post.prof_category}} - {{ post.dev_category}}</h7>
@@ -65,7 +61,7 @@
                   <p class="card-text"> {{ post.body }} (test text) </p>
                 </div>
                 <p>
-                  <a class="btn btn-light btn-sm" href="{% url 'post_detail' post.id %}">
+                  <a class="btn btn-outline-secondary btn-sm after-post-body" href="{% url 'post_detail' post.id %}">
                     Read Full Post
                   </a>
                 </p>
@@ -116,6 +112,9 @@
           </div>
         </div>
       {% endfor %}
+      <div class="post-list-to-top-of-page-btn-block">
+        <a class="btn btn-outline-secondary post-list-to-top-of-page-btn" href="#">Back To Top</a>
+      </div>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>

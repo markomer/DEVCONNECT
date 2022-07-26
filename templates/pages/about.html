@@ -4,6 +4,20 @@
 {% block title %}About{% endblock title %} 
 
 {% block content %} 
-  <h1 class="about-title">About Page</h1>
-  <h4>This App designed by Trey & Mark</h4>
+  <h1 class="about-title">About <img class="logo" href="#" src="{% static 'img/dev-connect-logo-1e.png' %}" alt="complete logo"></h1>
+  <h4>This app provides developers the ability and opportunity to make connections and share resources with other developers and to share software development items of interests.</h4>
+  <br>
+  <h5>This App designed by Trey Schneider & Mark Omer - </h5>
+ <h5>We chose this app concept for a major project while completing an intensive fullstack development course. We feel that this type of app facilitates software developers in sharing ideas, questions, and solutions in the development arena. Also, having message access as developers provides additional availability and connection in this industry. We sincerely hope many will find this application helpful and interesting.
+  </h5>
+  <h5>And if you haven't joined us yet - <a class="btn btn-outline-success" href="{% url 'login' %}">Do It Now !</a></h5>
+  <br>
+  <div class="search-again-title-and-search-back-btns">
+    <a href="{% url 'home' %}" class="btn btn-outline-secondary">
+      Home
+    </a>
+    <a href="{% url 'login' %}" class="btn btn-outline-secondary">
+      Login
+    </a>
+  </div>
 {% endblock content %}

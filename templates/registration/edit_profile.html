@@ -7,6 +7,12 @@
 <form action="" method="POST">
   {% csrf_token %}
   {{ form.as_p }}
-  <input type="submit" value="Submit" class=" btn btn-success">
+  <input type="submit" value="Submit" class="btn btn-success edit-submit-btn">
 </form>
+<p>
+  <a href="javascript:history.go(-1)"onMouseOver="self.status.referrer;return true" class="btn btn-outline-secondary">BACK</a>
+  <a href="{% url 'post_list' %}" class="btn btn-outline-secondary">
+    Go to Posts List
+  </a>
+</p>
 {% endblock content %}

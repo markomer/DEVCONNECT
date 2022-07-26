@@ -3,15 +3,30 @@
 {% load bootstrap_icons %}
 {% block title %}Messages{% endblock %}
 {% block content %}
-<style>
-  .custom_container{
-    height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
-  height: calc(var(--vh, 1vh) * 100);
-    overflow: auto;
-  }
-</style>
+
+
+  <div class="messages-title-and-back-btns">
+    <h1>Messages</h1>
+    <div class="messages-back-btns">
+      <a href="javascript:history.go(-1)"onMouseOver="self.status.referrer;return true" class="btn btn-outline-secondary">BACK</a>
+      <a href="{% url 'post_list' %}" class="btn btn-outline-secondary">
+        Return To Posts List
+      </a>
+    </div>
+  </div>
+  <br>
+  <div>
+  <style>
+    .custom_container{
+      height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
+      height: calc(var(--vh, 1vh) * 100);
+      overflow: auto;
+      max-width: 140vh;
+      margin: 68px 100px 0 100px;
+    }
+  </style>
   <div class="d-flex w-100 h-100">
-    <div class="card position-relative w-25 d-flex flex-column" style="width: 18rem;padding-top:56px;">
+    <div class="card position-relative w-25 d-flex flex-column" style="width: 18rem;padding-top:0px;">
       <div class="bg-light border-bottom border-secondary text-center">
         <a href="{% url 'messages' %}">New Message</a>
       </div>
@@ -34,48 +49,49 @@
             </form>
             {% endfor %}
     </div>
-      {% if convo or new_message %}
-      <div style="padding-top:60px;" class="card w-100 h-100">
-        <div class="bg-light p-3 border-bottom border-secondary">
-          <small><h6>{{convo_user}}</h6></small>
-        </div>
-        <div id="message-box" class="overflow-auto pb-5">
-          {% for message, whos in convo %}
-          {% if whos == 'yours' %}
-          <div style="margin-left:auto; margin-top:10px; margin-bottom:10px; margin-right:5px;" class="bg-primary py-2 px-3 w-50 rounded-pill">{{ message.message }}</div>
-          {% else %}
-          <div class="bg-success m-2 py-2 px-3 w-50 rounded-pill">{{ message.message}}</div>
-          {% endif %}
-          {% endfor %}
-        </div>
-        <div class="position-absolute bottom-0 w-100">
-          <form class="d-flex" action="{% url 'new_message' %}" method="post">
-            {% csrf_token %}
-            <input name="user" style="display: none;" type="text" value="{{convo_user.pk}}">
-            <input required name="message" class="form-control" type="text" placeholder="reply">
-            <button type="submit" class="btn btn-primary">{% bs_icon 'send' %}</button>
-          </form>
-        </div>
+    {% if convo or new_message %}
+    <div style="padding-top:0px;" class="card w-100 h-100">
+      <div class="bg-light p-3 border-bottom border-secondary">
+        <small><h6>{{convo_user}}</h6></small>
       </div>
-      {% else %}
-      <div style="padding-top:60px;" class="card w-100 h-100">
-        <div class="bg-light p-3 border-bottom border-secondary">
-          <div class="dropdown show">
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              New Message To:
-            </a>
-          
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              {% for user in user_list %}
-              <a class="dropdown-item" href="{% url 'messages' user.pk %}">{{ user }}</a>
-              {% endfor %}
-            </div>
+      <div id="message-box" class="overflow-auto pb-5">
+        {% for message, whos in convo %}
+        {% if whos == 'yours' %}
+        <div style="margin-left:auto; margin-top:10px; margin-bottom:10px; margin-right:5px;" class="bg-black text-white py-2 px-3 w-50 rounded-pill">{{ message.message }}</div>
+        {% else %}
+        <div class="bg-success text-white m-2 py-2 px-3 w-50 rounded-pill">{{ message.message}}</div>
+        {% endif %}
+        {% endfor %}
+      </div>
+      <div class="position-absolute bottom-0 w-100">
+        <form class="d-flex" action="{% url 'new_message' %}" method="post">
+          {% csrf_token %}
+          <input name="user" style="display: none;" type="text" value="{{convo_user.pk}}">
+          <input required name="message" class="form-control" type="text" placeholder="reply">
+          <button type="submit" class="btn btn-primary">{% bs_icon 'send' %}</button>
+        </form>
+      </div>
+    </div>
+    {% else %}
+    <div style="padding-top:60px;" class="card w-100 h-100">
+      <div class="bg-light p-3 border-bottom border-secondary">
+        <div class="dropdown show">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            New Message To:
+          </a>
+        
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            {% for user in user_list %}
+            <a class="dropdown-item" href="{% url 'messages' user.pk %}">{{ user }}</a>
+            {% endfor %}
           </div>
         </div>
       </div>
-      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</div>
 
-  
 <script>
   updateScroll()
   function updateScroll(){

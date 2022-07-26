@@ -6,13 +6,15 @@
 {% block content %}
 <h1 class="home-in-title">Dev-Connect</h1>
 <div class="home-in-info-block">
+  <h4>Where you can find connections and resources for your software developer interests.</h4>
+  <br>
   <h4>Glad You're Back - </h4>
-  <h4>Discover - Create - Revisit Posts You Appreciate.</h4>
-  <h4>Use Messages to enjoy contact with like-developers.</h4>
+  <h4>- Create / Discover / Revisit Posts You Appreciate.</h4>
+  <h4>- Use Messages to enjoy contact with like-developers.</h4>
   <div class="home-in-btns-line">
-    <a class="btn btn-secondary bg-white text-black home-in-btn" href="{% url 'post_list' %}">To Posts List</a>
-    <a class="btn btn-secondary bg-white text-black home-in-btn-two" href="{% url 'post_new' %}">Create Posts</a>
-    <a class="btn btn-secondary bg-white text-black home-in-btn" href="{% url 'messages' %}">Messages</a>
+    <a class="btn btn-outline-secondary home-in-btn" href="{% url 'post_list' %}">To Posts List</a>
+    <a class="btn btn-outline-secondary home-in-btn-two" href="{% url 'post_new' %}">Create Posts</a>
+    <a class="btn btn-outline-secondary home-in-btn" href="{% url 'messages' %}">Messages</a>
   </div>
 </div>
 
