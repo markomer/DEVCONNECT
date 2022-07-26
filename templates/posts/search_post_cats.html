@@ -11,7 +11,7 @@
             <h1 class="my-list-cat-label">My List: </h1>
             <h4 class="my-list-cats-searched"> {{ searched }} - {{ searchedAgain }} </h4>
           </div>
-          <form class="d-flex" method=POST action="{% url 'search_post_cats' %}">
+          <form class="d-flex search-again-search-boxes" method=POST action="{% url 'search_post_cats' %}">
             {% csrf_token %} 
             <select class="form-select exact" placeholder="Search Posts by Prof Category" aria-label="Default select collapseExample" name="searched">
                 <option value="" disabled selected hidden>Search Posts By Prof Categories</option>

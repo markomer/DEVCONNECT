@@ -1,4 +1,4 @@
-{% extends 'message_base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% load bootstrap_icons %}
 {% block title %}Messages{% endblock %}
@@ -6,7 +6,7 @@
 
 
   <div class="messages-title-and-back-btns">
-    <h1>Messages</h1>
+    <h1 class="messages-title">Messages</h1>
     <div class="messages-back-btns">
       <a href="javascript:history.go(-1)"onMouseOver="self.status.referrer;return true" class="btn btn-outline-secondary">BACK</a>
       <a href="{% url 'post_list' %}" class="btn btn-outline-secondary">
@@ -15,7 +15,7 @@
     </div>
   </div>
   <br>
-  <div>
+  <div class="messages-page-block">
   <style>
     .custom_container{
       height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
@@ -27,39 +27,41 @@
   </style>
   <div class="d-flex w-100 h-100">
     <div class="card position-relative w-25 d-flex flex-column" style="width: 18rem;padding-top:0px;">
-      <div class="bg-light border-bottom border-secondary text-center">
-        <a href="{% url 'messages' %}">New Message</a>
-      </div>
-        <div class="bg-light border-bottom border-secondary text-center">
-          Unread Messages
-        </div>
-            {% for num, user in unread_messages %}
-            <form id="{{user.pk}}" action="{% url 'messages' user.pk %}" method="get">
-              <input name="user" style="display: none;" type="text" value="{{user.pk}}">
-              <a onclick="document.getElementById('{{user.pk}}').submit();" class="border-bottom border-dark" href="javascript:{}"><div class="d-flex justify-content-between px-3 py-2"><p class="m-0">{{ user.username }}</p><p class="m-0">{{ num.dcount }}</p></div></a>
-            </form>
-            {% endfor %}
-        <div class="bg-light border-bottom border-secondary text-center">
-          Chats
-        </div>
-            {% for user in convo_list %}
-            <form id="{{user.pk}}" action="{% url 'messages' user.pk %}" method="get">
-              <input name="user" style="display: none;" type="text" value="{{user.pk}}">
-              <a onclick="document.getElementById('{{user.pk}}').submit();" class="border-bottom border-dark" href="javascript:{}"><div class="d-flex justify-content-between px-3 py-2"><p class="m-0">{{ user.username }}</p></div></a>
-            </form>
-            {% endfor %}
+
+      <h5 class="bg-light border border-secondary text-center">
+        Unread Messages
+      </h5>
+        {% for num, user in unread_messages %}
+        <form id="{{user.pk}}" action="{% url 'messages' user.pk %}" method="get">
+          <input name="user" style="display: none;" type="text" value="{{user.pk}}">
+          <a onclick="document.getElementById('{{user.pk}}').submit();" class="border-bottom border-dark" href="javascript:{}"><div class="d-flex justify-content-between px-3 py-2"><p class="m-0">{{ user.username }}</p><p class="m-0">{{ num.dcount }}</p></div></a>
+        </form>
+        {% endfor %}
+
+      <h5 class="bg-light border border-secondary text-center">
+        <a href="{% url 'messages' %}">Create New Message</a>
+      </h5>
+      <h5 class="bg-light border border-secondary text-center">
+        Existing Chats
+      </h5>
+        {% for user in convo_list %}
+        <form id="{{user.pk}}" action="{% url 'messages' user.pk %}" method="get">
+          <input name="user" style="display: none;" type="text" value="{{user.pk}}">
+          <a onclick="document.getElementById('{{user.pk}}').submit();" class="border-bottom border-dark" href="javascript:{}"><div class="d-flex justify-content-between px-3 py-2"><p class="m-0">{{ user.username }}</p></div></a>
+        </form>
+        {% endfor %}
     </div>
     {% if convo or new_message %}
     <div style="padding-top:0px;" class="card w-100 h-100">
-      <div class="bg-light p-3 border-bottom border-secondary">
-        <small><h6>{{convo_user}}</h6></small>
+      <div class="bg-light p-3 border border-secondary">
+        <span><h7>Chatting with...</h7><h5> {{convo_user}}</h5></span>
       </div>
       <div id="message-box" class="overflow-auto pb-5">
         {% for message, whos in convo %}
         {% if whos == 'yours' %}
-        <div style="margin-left:auto; margin-top:10px; margin-bottom:10px; margin-right:5px;" class="bg-black text-white py-2 px-3 w-50 rounded-pill">{{ message.message }}</div>
+        <div style="margin-left:auto; margin-top:10px; margin-bottom:10px; margin-right:5px;" class="bg-black text-white py-2 px-3 w-50 rounded">{{ message.message }}</div>
         {% else %}
-        <div class="bg-success text-white m-2 py-2 px-3 w-50 rounded-pill">{{ message.message}}</div>
+        <div class="bg-success text-white m-2 py-2 px-3 w-50 rounded">{{ message.message}}</div>
         {% endif %}
         {% endfor %}
       </div>

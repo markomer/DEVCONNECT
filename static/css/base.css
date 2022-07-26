@@ -14,28 +14,6 @@ p {
   margin: 0px;
 }
 
-/* nav 
-
-nav {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  height: 35px;
-  background-color: mediumpurple;
-  color: rgb(216, 124, 19);
-} */
-
-/*
-
-.navbar-nav ul{
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-evenly;
-  font-family: "Roboto";
-  color: rgb(190, 45, 45);
-} */
-
 
 .notification .badge {
   /* position: absolute; */
@@ -48,20 +26,15 @@ nav {
   margin-bottom: 5px;
 }
 
+/*========= NavBar =========*/
 
 .container-fluid {
-
   color: white;
-  background-color: #483d8b;
+  background-color: darkslateblue;
 }
 
 .nav-link {
   color: white;
-}
-
-.logo {
- display: block;
- block-size: 25px;
 }
 
 .bars-icon {
@@ -77,6 +50,16 @@ nav {
 
 .nav-item {
   color: white;
+}
+
+.logo {
+  display: block;
+  height: 25px;
+}
+
+.nav-link.active {
+  display: block;
+  margin-left: -10px;
 }
 
 .nav-link:hover{
@@ -97,16 +80,17 @@ nav {
   border: 0px;
 }
 
-.navbar.nav {
-  border-style: none;
-}
-
 .nav-item-spacer a {
   color: darkslateblue;
 }
 
+.navbar.navbar-expand-md.bg-black {
+  background-color: black;
+}
 
-/* In Navbar Line - 'Welcome User Line' */
+
+/*========= Navbar - 'Welcome User =========*/
+
 
 .welcome-user-line {
   display: flex;
@@ -128,103 +112,21 @@ nav {
   font-size: xx-small;
 }
 
-/* ===== Post List Page ====*/
 
-.post-list-title-block {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
+/*========= Page Titles =========*/
 
-.form-control.me-2 {
-  width: 300px;
-}
 
-/*======= Card =========*/
-
-.card-body {
-  border: solid 1px darkslateblue;
-}
-
-.card-header {
-  border: solid 1px darkslateblue;
-  border-bottom: none;
-}
-
-/*======= Post List Page ======*/
-
-.post-list-title-block, .new-post-title, .about-title, .home-in-title, .home-title, .login-title, .log-out-title, .edit-profile-title, .signup-title, .delete-title, .edit-title, .detail-title {
+.post-list-title-block, .new-post-title, .about-title, .home-in-title, .home-title, .login-title, .log-out-title, .edit-profile-title, .signup-title, .delete-title, .edit-title, .detail-title, .messages-title {
   margin: 10px 0 10px 0;
 }
 
-.home-logout-button {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  color: white;
-  margin: 15px 0 0 0;
-}
 
-.home-logout-btn-name {
-  color: white;
-}
+/*========= Login & SignUp =========*/
 
-.home-logout-btn-name:hover {
-  color: white;
-}
-
-.home-logout-btn-message {
-  color: black;
-  margin-left: 10px;
-}
-
-.search-again-title-and-search-block {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 10px 0 0 0;
-}
-
-.search-again-title-and-search-line {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-end;
-}
-
-.my-list-searched-cats {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.my-list-cat-label {
-  margin-right: 10px;
-}
-
-.my-list-cats-searched {
-  padding: 10px 0 0 5px;
-}
-
-.search-again-title-and-search-back-btns {
-
-}
-
-.search-again-read-choices-and-back-btns {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 10px 0 0 0;
-}
 
 .login-signup-box {
   display: flex;
   flex-direction: column;
-
 }
 
 .login-box {
@@ -260,6 +162,36 @@ nav {
   width: 100%;
 }
 
+
+/*========= Logout (home_logout) =========*/
+
+
+.home-logout-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  margin: 15px 0 0 0;
+}
+
+.home-logout-btn-name {
+  color: white;
+}
+
+.home-logout-btn-name:hover {
+  color: white;
+}
+
+.home-logout-btn-message {
+  color: black;
+  margin-left: 10px;
+}
+
+
+/*========= Home (home_in) =========*/
+
+
 .home-in-info-block {
   display: flex;
   flex-direction: column;
@@ -286,9 +218,108 @@ nav {
   margin: 0 5px 0 5px;
 }
 
+
+/*========= Posts List Page =========*/
+
+
+.post-list-title-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-control.me-2 {
+  width: 300px;
+}
+
+
+/*          Cards (Posts List)          */
+
+
+.card-body {
+  border: solid 1px darkslateblue;
+}
+
+.card-header {
+  border: solid 1px darkslateblue;
+  border-bottom: none;
+}
+
 .after-post-body {
   margin: 5px 0 0 0;
 }
+
+
+/*========= Searched Post-Cats Page =========*/
+
+
+.search-again-title-and-search-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px 0 0 0;
+}
+
+.search-again-title-and-search-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-again-search-boxes {
+  padding: 5px 0 0 0;
+}
+
+.my-list-searched-cats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.my-list-cat-label {
+  margin-right: 10px;
+}
+
+.my-list-cats-searched {
+  padding: 10px 0 0 5px;
+}
+
+.search-again-read-choices-and-back-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 0 0 0;
+}
+
+
+/*========= Messages Page =========*/
+
+
+.messages-page-block {
+  display: flex;
+  flex-direction: row;
+  border: solid 2px;
+}
+
+
+/*========= About Page =========*/
+
+
+.about-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 260px;
+}
+
+
+/*========= BTNS (messages, details,etc.) =========*/
+
 
 .messages-title-and-back-btns, .detail-title-and-back-btns {
   display: flex;
@@ -297,9 +328,10 @@ nav {
   align-items: center;
 }
 
-.message-back-btns, .detail-back-btns {
+.messages-back-btns, .detail-back-btns {
   display: flex;
   flex-direction: row;
+  padding: 10px 0 0 0;
 }
 
 .post-list-to-top-of-page-btn-block {
@@ -318,13 +350,3 @@ width: 200px;
   margin: 12px 0 20px 0;
 }
 
-.about-title {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: baseline;
-}
-
-.logo {
-  margin: 0 0 0 20px;
-}
