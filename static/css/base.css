@@ -2,9 +2,7 @@ body {
   background-image: url('../img/coding-tag-transparent-10-2b.png');
   background-attachment: fixed;
   background-repeat: repeat;
-
 }
-
 
 h1 {
   color: rgb(8, 180, 8);
@@ -13,7 +11,6 @@ h1 {
 p {
   margin: 0px;
 }
-
 
 .notification .badge {
   /* position: absolute; */
@@ -121,6 +118,22 @@ p {
 }
 
 
+/*========= Page Info Lines =========*/
+
+
+.home-info-line, .home-in-info-line, .login-info-line, .about-info-line, .messages-info-line, .list-info-line, .searched-page-info-line, .new-info-line, .detail-info-line, .edit-info-line, .edit-profile-info-line, .home-logout-info-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to right, darkslateblue, rgb(227, 222, 253), rgb(245, 245, 245), rgb(245, 245, 245), rgb(245, 245, 245), rgb(213, 228, 219), darkgreen);
+
+  padding: 5px 70px 0 70px;
+}
+
+
+
+
+
 /*========= Login & SignUp =========*/
 
 
@@ -128,6 +141,8 @@ p {
   display: flex;
   flex-direction: column;
 }
+
+
 
 .login-box {
   display: flex;
@@ -172,7 +187,7 @@ p {
   justify-content: flex-start;
   align-items: center;
   color: white;
-  margin: 15px 0 0 0;
+  margin: 2px 0 6px 0;
 }
 
 .home-logout-btn-name {
@@ -189,7 +204,7 @@ p {
 }
 
 
-/*========= Home (home_in) =========*/
+/*========= Home (home_in / home) =========*/
 
 
 .home-in-info-block {
@@ -258,7 +273,7 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 10px 0 0 0;
+  margin: 10px 0 10px 0;
 }
 
 .search-again-title-and-search-line {
@@ -292,7 +307,7 @@ p {
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
-  padding: 10px 0 0 0;
+  padding: 6px 0 0 0;
 }
 
 
@@ -303,6 +318,25 @@ p {
   display: flex;
   flex-direction: row;
   border: solid 2px;
+}
+
+.chatting-with-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatting-with {
+  margin: 0 10px 0 0;
+}
+
+.chatting-with-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 3px;
 }
 
 

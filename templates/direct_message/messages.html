@@ -14,6 +14,9 @@
       </a>
     </div>
   </div>
+  <div class="messages-info-line">
+    <h4>Messages / Connections</h4>
+</div>
   <br>
   <div class="messages-page-block">
   <style>
@@ -53,13 +56,27 @@
     </div>
     {% if convo or new_message %}
     <div style="padding-top:0px;" class="card w-100 h-100">
-      <div class="bg-light p-3 border border-secondary">
-        <span><h7>Chatting with...</h7><h5> {{convo_user}}</h5></span>
+      <div class="bg-light p-3 border border-secondary chatting-with-block">
+        <div class="chatting-with-line">
+          <h7 class="chatting-with">Chatting with...</h7>
+          <h5> {{convo_user}} </h5>
+        </div>
+          <div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              New Message To:
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              {% for user in user_list %}
+              <a class="dropdown-item" href="{% url 'messages' user.pk %}">{{ user }}</a>
+              {% endfor %}
+            </div>
+          </div>
+
       </div>
       <div id="message-box" class="overflow-auto pb-5">
         {% for message, whos in convo %}
         {% if whos == 'yours' %}
-        <div style="margin-left:auto; margin-top:10px; margin-bottom:10px; margin-right:5px;" class="bg-black text-white py-2 px-3 w-50 rounded">{{ message.message }}</div>
+        <div style="margin-left:auto; margin-top:10px; margin-bottom:10px; margin-right:5px;" class="bg-dark text-white py-2 px-3 w-50 rounded">{{ message.message }}</div>
         {% else %}
         <div class="bg-success text-white m-2 py-2 px-3 w-50 rounded">{{ message.message}}</div>
         {% endif %}
@@ -75,13 +92,12 @@
       </div>
     </div>
     {% else %}
-    <div style="padding-top:60px;" class="card w-100 h-100">
-      <div class="bg-light p-3 border-bottom border-secondary">
+    <div class="card w-100 h-100">
+      <div class="bg-light p-3 border border-secondary">
         <div class="dropdown show">
           <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             New Message To:
           </a>
-        
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
             {% for user in user_list %}
             <a class="dropdown-item" href="{% url 'messages' user.pk %}">{{ user }}</a>

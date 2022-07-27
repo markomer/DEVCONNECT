@@ -4,11 +4,13 @@
 
 {% block content %} 
 <h1 class="log-out-title">Are you sure you want to Logout ?!?</h1>
-<div class="home-logout-button">
-  <button type="button" class="btn btn-danger">
-    <a class="home-logout-btn-name" href="{% url 'logout' %}" >LOG OUT</a>
-  </button>
-  <h4 class="home-logout-btn-message">Come back soon!</h4>
+<div class="home-logout-info-line">
+  <div class="home-logout-button">
+    <button type="button" class="btn btn-danger">
+      <a class="home-logout-btn-name" href="{% url 'logout' %}" >LOG OUT</a>
+    </button>
+    <h4 class="home-logout-btn-message">Come back soon!</h4>
+  </div>
 </div>
 <br>
 <a href="javascript:history.go(-1)"onMouseOver="self.status.referrer;return true" class="btn btn-outline-secondary">Do Not Log Out - GO BACK</a>

@@ -3,17 +3,21 @@
 {% block title %}New Post{% endblock title %} 
 
 {% block content %}
-  <h1 class="new-post-title">New Post</h1> 
-  <form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.media }}
-    {{ form.as_p }}
-    <input type="submit" value="Create" class="btn btn-success new-post-create-btn">
-  </form>
-  <div class="search-again-title-and-search-back-btns">
-    <a href="javascript:history.go(-1)"onMouseOver="self.status.referrer;return true" class="btn btn-outline-secondary">BACK</a>
-    <a href="{% url 'post_list' %}" class="btn btn-outline-secondary">
-      Return To Posts List
-    </a>
-  </div>
+<h1 class="new-post-title">New Post</h1>
+<div class="new-info-line">
+  <h4>Create New Post</h4>
+</div>
+<br> 
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.media }}
+  {{ form.as_p }}
+  <input type="submit" value="Create" class="btn btn-success new-post-create-btn">
+</form>
+<div class="search-again-title-and-search-back-btns">
+  <a href="javascript:history.go(-1)"onMouseOver="self.status.referrer;return true" class="btn btn-outline-secondary">BACK</a>
+  <a href="{% url 'post_list' %}" class="btn btn-outline-secondary">
+    Return To Posts List
+  </a>
+</div>
 {% endblock content %} 
