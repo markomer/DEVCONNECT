@@ -8,6 +8,7 @@ from django.contrib.auth.mixins import (LoginRequiredMixin, UserPassesTestMixin)
 from django.urls import reverse_lazy
 from .models import Post, Like, Comment
 from .forms import PostForm
+from django.core.paginator import Paginator
 
 
 class PostCreateView(LoginRequiredMixin, CreateView):
@@ -17,6 +18,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
   #fields = ['title', 'title_tag', 'body',]
   success_url = reverse_lazy('post_list')
 
+
   def form_valid(self, form):
     form.instance.author = self.request.user
     return super().form_valid(form)
@@ -25,12 +27,12 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 class PostListView(ListView):
   template_name = 'posts/list.html'
   model = Post
-
+  paginate_by = 3
+  context_object_name = "posts"
+  
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
-    posts = Post.objects.all()
-    liked_by = [[i.liker for i in x.postlikes.all()] for x in posts]
-    context['posts'] = zip(posts, liked_by)
+    context['likers'] = [[i.liker for i in x.postlikes.all()] for x in Post.objects.all()]
     return context
 
 
