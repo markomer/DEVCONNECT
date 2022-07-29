@@ -265,6 +265,15 @@ p {
   margin: 5px 0 0 0;
 }
 
+.post-title-btn {
+  padding-left: 0px;
+  padding-right: 5px;
+}
+
+.post-cat-label {
+  margin-left: 12px;
+}
+
 
 /*========= Searched Post-Cats Page =========*/
 
@@ -352,6 +361,18 @@ p {
 }
 
 
+/*========= Delete Page =========*/
+
+
+.delete-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  margin: 2px 0 6px 15px;
+}
+
 /*========= BTNS (messages, details,etc.) =========*/
 
 
@@ -383,4 +404,3 @@ width: 200px;
 .edit-submit-btn, .signup-submit-btn, .new-post-create-btn {
   margin: 12px 0 20px 0;
 }
-

@@ -39,7 +39,9 @@
                     <div class="card">
     
                         <div class="card-header">
-                            <h5 class="card-title m-0">"{{ post.title }}" - by {{ post.author }} - {{ post.created_on|timesince }} ago</h5>
+                            <a class="btn btn-light post-title-btn" href="{% url 'post_detail' post.id %}">
+                                <h5 class="card-title m-0">"{{ post.title }}" - by {{ post.author }} - {{ post.created_on|timesince }} ago</h5>
+                            </a>
                             <div class="post-cat-label">
                                 <h6>Category:</h6>
                                 <h6 class="post-category">{{ post.prof_category}} - {{ post.dev_category}}</h6>

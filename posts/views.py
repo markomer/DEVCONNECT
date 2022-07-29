@@ -24,7 +24,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     return super().form_valid(form)
     
 
-class PostListView(ListView):
+class PostListView(LoginRequiredMixin, ListView):
   template_name = 'posts/list.html'
   model = Post
   paginate_by = 3
