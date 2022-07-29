@@ -5,6 +5,8 @@ from .views import (
   PostDeleteView,
 )
 from . import views
+from django.conf import settings 
+from django.conf.urls.static import static 
 
 urlpatterns = [
   path('', PostListView.as_view(), name='post_list'),
@@ -15,7 +17,7 @@ urlpatterns = [
   path('create-like/<pk>', views.create_like_view, name = 'create_like'),
   path('create-comment/<pk>', views.create_comment_view, name = 'create_comment'),
   path('search_post_cats', views.search_post_cats, name = 'search_post_cats'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 
