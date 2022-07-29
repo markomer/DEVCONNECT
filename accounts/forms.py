@@ -55,8 +55,6 @@ class EditProfileForm(UserChangeForm):
   is_active = forms.CharField(max_length=100, widget=forms.CheckboxInput(attrs={'class': 'form-check'}))
   date_joined = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
 
-  #prof = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
-
   #prof = forms.ChoiceField(label="Choose Profession Type", choices=(PROF_CHOICES), widget=forms.Select(attrs={'class':'form-choice'}))
 
   #dev = forms.ChoiceField(label="Choose Developer Type", choices=(DEV_CHOICES), widget=forms.Select(attrs={'class':'form-control'}))

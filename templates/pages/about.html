@@ -16,9 +16,15 @@
   <br>
   <div class="search-again-title-and-search-back-btns">
     <a href="javascript:history.go(-1)"onMouseOver="self.status.referrer;return true" class="btn btn-outline-secondary">BACK</a>
+    {% if user.is_authenticated %}
+    <a href="{% url 'home_in' %}" class="btn btn-outline-secondary">
+      Home
+    </a>
+    {% else %} 
     <a href="{% url 'home' %}" class="btn btn-outline-secondary">
       Home
     </a>
+    {% endif %}
     <a href="{% url 'login' %}" class="btn btn-outline-secondary">
       Login
     </a>
