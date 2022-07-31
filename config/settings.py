@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'posts',
     'direct_message',
     'django_bootstrap_icons',
-    'multiforloop',
 ]
 
 MIDDLEWARE = [
