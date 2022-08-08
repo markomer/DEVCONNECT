@@ -2,7 +2,7 @@ This "DevConnect" project is meant for software developers to
 have a platform in which to share thoughts, ideas, and resources. It alos has messaging available for personal conversations.
 
 
-- Functionality it has (what is working and what is not)
+- Functionalities:
 
 The main functionalities are working (posts, post queries, messages, 
 registrations, logins, ...). 
